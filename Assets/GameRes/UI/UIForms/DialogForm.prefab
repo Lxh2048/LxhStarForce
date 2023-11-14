@@ -639,10 +639,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_OnHover:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 88291224180005553}
+        m_TargetAssemblyTypeName: GameFrame.Hotfix.UGUIForm, GameFrame.Hotfix
+        m_MethodName: PlayUISound
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10000
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 88291224180005553}
+        m_TargetAssemblyTypeName: GameFrame.Hotfix.UGUIForm, GameFrame.Hotfix
+        m_MethodName: PlayUISound
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10001
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 88291224180005553}
+        m_TargetAssemblyTypeName: GameFrame.Hotfix.DialogForm, GameFrame.Hotfix
+        m_MethodName: OnConfirmButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &125418
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,12 +834,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8c12d663f0a66e41955a577946e0671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TitleText: {fileID: 0}
-  m_MessageText: {fileID: 0}
-  m_ModeObjects: []
-  m_ConfirmTexts: []
-  m_CancelTexts: []
-  m_OtherTexts: []
+  m_TitleText: {fileID: 11434978}
+  m_MessageText: {fileID: 11419300}
+  m_ModeObjects:
+  - {fileID: 100172}
+  - {fileID: 160110}
+  - {fileID: 190246}
+  m_ConfirmTexts:
+  - {fileID: 11458286}
+  - {fileID: 11428172}
+  - {fileID: 11466394}
+  m_CancelTexts:
+  - {fileID: 11475382}
+  - {fileID: 11420780}
+  m_OtherTexts:
+  - {fileID: 11468576}
 --- !u!1 &133230
 GameObject:
   m_ObjectHideFlags: 0
@@ -940,10 +985,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_OnHover:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 88291224180005553}
+        m_TargetAssemblyTypeName: GameFrame.Hotfix.UGUIForm, GameFrame.Hotfix
+        m_MethodName: PlayUISound
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10000
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 88291224180005553}
+        m_TargetAssemblyTypeName: GameFrame.Hotfix.UGUIForm, GameFrame.Hotfix
+        m_MethodName: PlayUISound
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10001
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 88291224180005553}
+        m_TargetAssemblyTypeName: GameFrame.Hotfix.DialogForm, GameFrame.Hotfix
+        m_MethodName: OnCancelButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &143604
 GameObject:
   m_ObjectHideFlags: 0
@@ -1005,10 +1086,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_OnHover:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 88291224180005553}
+        m_TargetAssemblyTypeName: GameFrame.Hotfix.UGUIForm, GameFrame.Hotfix
+        m_MethodName: PlayUISound
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10000
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 88291224180005553}
+        m_TargetAssemblyTypeName: GameFrame.Hotfix.UGUIForm, GameFrame.Hotfix
+        m_MethodName: PlayUISound
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10001
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 88291224180005553}
+        m_TargetAssemblyTypeName: GameFrame.Hotfix.DialogForm, GameFrame.Hotfix
+        m_MethodName: OnOtherButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &151362
 GameObject:
   m_ObjectHideFlags: 0
@@ -1412,10 +1529,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_OnHover:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 88291224180005553}
+        m_TargetAssemblyTypeName: GameFrame.Hotfix.UGUIForm, GameFrame.Hotfix
+        m_MethodName: PlayUISound
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10000
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 88291224180005553}
+        m_TargetAssemblyTypeName: GameFrame.Hotfix.UGUIForm, GameFrame.Hotfix
+        m_MethodName: PlayUISound
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10001
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 88291224180005553}
+        m_TargetAssemblyTypeName: GameFrame.Hotfix.DialogForm, GameFrame.Hotfix
+        m_MethodName: OnConfirmButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &170296
 GameObject:
   m_ObjectHideFlags: 0
@@ -1556,10 +1709,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_OnHover:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 88291224180005553}
+        m_TargetAssemblyTypeName: GameFrame.Hotfix.UGUIForm, GameFrame.Hotfix
+        m_MethodName: PlayUISound
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10000
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 88291224180005553}
+        m_TargetAssemblyTypeName: GameFrame.Hotfix.UGUIForm, GameFrame.Hotfix
+        m_MethodName: PlayUISound
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10001
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 88291224180005553}
+        m_TargetAssemblyTypeName: GameFrame.Hotfix.DialogForm, GameFrame.Hotfix
+        m_MethodName: OnCancelButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &174596
 GameObject:
   m_ObjectHideFlags: 0
@@ -1818,10 +2007,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_OnHover:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 88291224180005553}
+        m_TargetAssemblyTypeName: GameFrame.Hotfix.UGUIForm, GameFrame.Hotfix
+        m_MethodName: PlayUISound
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10000
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 88291224180005553}
+        m_TargetAssemblyTypeName: GameFrame.Hotfix.UGUIForm, GameFrame.Hotfix
+        m_MethodName: PlayUISound
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10001
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 88291224180005553}
+        m_TargetAssemblyTypeName: GameFrame.Hotfix.DialogForm, GameFrame.Hotfix
+        m_MethodName: OnConfirmButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &199804
 GameObject:
   m_ObjectHideFlags: 0
