@@ -29,6 +29,8 @@ namespace UGFExtensions.Editor.ResourceTools
         private string m_SourceAssetExceptLabelFilter = "l:ResourceExclusive";
         private string[] m_SourceAssetExceptLabelFilterGUIDArray;
 
+        private List<DirectoryInfo> m_DirectoryInfoList;
+
         [MenuItem("Game Framework/Resource Tools/Resource Rule Editor", false, 50)]
         static void Open()
         {
@@ -510,6 +512,36 @@ namespace UGFExtensions.Editor.ResourceTools
                         }
                             break;
 
+                        case ResourceFilterType.FolderRecursion:
+                        {
+                            // DirectoryInfo[] assetDirectories =
+                            //     new DirectoryInfo(resourceRule.assetsDirectoryPath).GetDirectories();
+                            // foreach (DirectoryInfo directory in assetDirectories)
+                            // {
+                            //     string relativeDirectoryName =
+                            //         directory.FullName.Substring(Application.dataPath.Length + 1);
+                            //
+                            //     ApplyResourceFilter(ref signedAssetBundleList, resourceRule,
+                            //         Utility.Path.GetRegularPath(relativeDirectoryName), string.Empty,
+                            //         directory.FullName);
+                            // }
+                            
+                            m_DirectoryInfoList ??= new List<DirectoryInfo>();
+                            m_DirectoryInfoList.Clear();
+                            DirectoryInfo directoryInfo = new DirectoryInfo(resourceRule.assetsDirectoryPath);
+                            ForeachDir(directoryInfo);
+                            foreach (var directory in m_DirectoryInfoList)
+                            {
+                                string relativeDirectoryName =
+                                    directory.FullName.Substring(Application.dataPath.Length + 1);
+                            
+                                ApplyResourceFilter(ref signedAssetBundleList, resourceRule,
+                                    Utility.Path.GetRegularPath(relativeDirectoryName), string.Empty,
+                                    directory.FullName);
+                            }
+                        }
+                            break;
+
                         case ResourceFilterType.ChildrenFilesOnly:
                         {
                             DirectoryInfo[] assetDirectories =
@@ -552,6 +584,21 @@ namespace UGFExtensions.Editor.ResourceTools
             }
         }
 
+        private void ForeachDir(DirectoryInfo info)
+        {
+            foreach (var dirInfo in info.GetDirectories())
+            {
+                if (dirInfo.GetDirectories().Length == 0)
+                {
+                    m_DirectoryInfoList.Add(dirInfo);
+                }
+                else
+                {
+                    ForeachDir(dirInfo);
+                }
+            }
+        }
+
         private void ApplyResourceFilter(ref List<string> signedResourceList, ResourceRule resourceRule,
             string resourceName, string singleAssetGUID = "", string childDirectoryPath = "")
         {
@@ -585,6 +632,7 @@ namespace UGFExtensions.Editor.ResourceTools
                 {
                     case ResourceFilterType.Root:
                     case ResourceFilterType.ChildrenFoldersOnly:
+                    case ResourceFilterType.FolderRecursion:
                         string[] patterns = resourceRule.searchPatterns.Split(';', ',', '|');
                         if (childDirectoryPath == "")
                         {
