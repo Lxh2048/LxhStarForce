@@ -5,14 +5,14 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameEntry = GameFrame.Main.GameEntry;
+using GameEntry = Game.Main.GameEntry;
 using System.Collections.Generic;
 using UnityGameFramework.Runtime;
-using GameFrame.Main;
+using Game.Main;
 using GameFramework;
 using UnityEngine;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     /// <summary>
     /// 战机类。
@@ -48,18 +48,18 @@ namespace GameFrame.Hotfix
 
             Name = Utility.Text.Format("Aircraft ({0})", Id.ToString());
 
-            GameEntry.Entity.ShowThruster(m_AircraftData.GetThrusterData());
+            Main.GameEntry.Entity.ShowThruster(m_AircraftData.GetThrusterData());
 
             List<WeaponData> weaponDatas = m_AircraftData.GetAllWeaponDatas();
             for (int i = 0; i < weaponDatas.Count; i++)
             {
-                GameEntry.Entity.ShowWeapon(weaponDatas[i]);
+                Main.GameEntry.Entity.ShowWeapon(weaponDatas[i]);
             }
 
             List<ArmorData> armorDatas = m_AircraftData.GetAllArmorDatas();
             for (int i = 0; i < armorDatas.Count; i++)
             {
-                GameEntry.Entity.ShowArmor(armorDatas[i]);
+                Main.GameEntry.Entity.ShowArmor(armorDatas[i]);
             }
         }
 
@@ -130,11 +130,11 @@ namespace GameFrame.Hotfix
         {
             base.OnDead(attacker);
 
-            GameEntry.Entity.ShowEffect(new EffectData(GameEntry.Entity.GenerateSerialId(), m_AircraftData.DeadEffectId)
+            Main.GameEntry.Entity.ShowEffect(new EffectData(Main.GameEntry.Entity.GenerateSerialId(), m_AircraftData.DeadEffectId)
             {
                 Position = CachedTransform.localPosition,
             });
-            GameEntry.Sound.PlaySound(m_AircraftData.DeadSoundId);
+            Main.GameEntry.Sound.PlaySound(m_AircraftData.DeadSoundId);
         }
 
         public override ImpactData GetImpactData()

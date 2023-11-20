@@ -5,13 +5,13 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameEntry = GameFrame.Main.GameEntry;
+using GameEntry = Game.Main.GameEntry;
 using UnityGameFramework.Runtime;
 using GameFramework;
 using UnityEngine;
 
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     /// <summary>
     /// 推进器类。
@@ -47,7 +47,7 @@ namespace GameFrame.Hotfix
                 return;
             }
 
-            GameEntry.Entity.AttachEntity(this, m_ThrusterData.OwnerId, AttachPoint);
+            Main.GameEntry.Entity.AttachEntity(this, m_ThrusterData.OwnerId, AttachPoint);
         }
 
 #if UNITY_2017_3_OR_NEWER

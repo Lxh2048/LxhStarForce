@@ -8,7 +8,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace GameFrame.Main
+namespace Game.Main
 {
     public abstract class SCPacketBase : PacketBase
     {

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-namespace GameFrame.Editor
+namespace Game.Editor
 {
     public class BasePostprocessor : AssetPostprocessor
     {

@@ -5,12 +5,12 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameEntry = GameFrame.Main.GameEntry;
+using GameEntry = Game.Main.GameEntry;
 using UnityGameFramework.Runtime;
 using GameFramework;
 using UnityEngine;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     /// <summary>
     /// 装甲类。
@@ -46,7 +46,7 @@ namespace GameFrame.Hotfix
                 return;
             }
 
-            GameEntry.Entity.AttachEntity(Entity, m_ArmorData.OwnerId, AttachPoint);
+            Main.GameEntry.Entity.AttachEntity(Entity, m_ArmorData.OwnerId, AttachPoint);
         }
 
 #if UNITY_2017_3_OR_NEWER

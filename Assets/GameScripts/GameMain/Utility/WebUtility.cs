@@ -7,7 +7,7 @@
 
 using System;
 
-namespace GameFrame.Main
+namespace Game.Main
 {
     public static class WebUtility
     {

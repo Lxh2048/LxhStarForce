@@ -10,14 +10,14 @@
 
 using System.Collections.Generic;
 using UnityGameFramework.Runtime;
-using GameFrame.Main;
+using Game.Main;
 using GameFramework;
 using System.Text;
 using UnityEngine;
 using System.IO;
 using System;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     /// <summary>
     /// 推进器表。

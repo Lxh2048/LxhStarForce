@@ -6,7 +6,7 @@ using UnityGameFramework.Runtime;
 
 using GameFramework;
 
-namespace GameFrame.Main
+namespace Game.Main
 {	
 	//本地化扩展工具
 	public static class LocalizationExtension

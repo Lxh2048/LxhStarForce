@@ -8,7 +8,7 @@
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     public class MyAircraft : Aircraft
     {

@@ -10,7 +10,7 @@ using UnityGameFramework.Runtime;
 using GameFramework;
 using UnityEngine;
 
-namespace GameFrame.Main
+namespace Game.Main
 {
     public class BuiltinDataComponent : GameFrameworkComponent
     {

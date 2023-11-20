@@ -1,15 +1,14 @@
-
-using GameFrame.Main;
 using System.Collections;
 using System.Collections.Generic;
+using Game.Main;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 using GameFramework.DataTable;
 using GameFramework.UI;
 using UnityEngine.UI;
-using GameEntry = GameFrame.Main.GameEntry;
+using GameEntry = Game.Main.GameEntry;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     public static class UIExtension
     {
@@ -48,7 +47,7 @@ namespace GameFrame.Hotfix
 
         public static bool HasUIForm(this UIComponent uiComponent, int uiFormId, string uiGroupName = null)
         {
-            IDataTable<DRUIForm> dtUIForm = GameEntry.DataTable.GetDataTable<DRUIForm>();
+            IDataTable<DRUIForm> dtUIForm = Main.GameEntry.DataTable.GetDataTable<DRUIForm>();
             DRUIForm drUIForm = dtUIForm.GetDataRow(uiFormId);
             if (drUIForm == null)
             {
@@ -163,7 +162,7 @@ namespace GameFrame.Hotfix
 
         private static void OpenNativeDialog(DialogParams dialogParams)
         {
-            // TODO£ºÕâÀïÓ¦¸Ãµ¯³öÔ­Éú¶Ô»°¿ò£¬ÏÈ¼ò»¯ÊµÏÖÎªÖ±½Ó°´È·ÈÏ°´Å¥
+            // TODOï¼šè¿™é‡Œåº”è¯¥å¼¹å‡ºåŸç”Ÿå¯¹è¯æ¡†ï¼Œå…ˆç®€åŒ–å®ç°ä¸ºç›´æ¥æŒ‰ç¡®è®¤æŒ‰é’®
             if (dialogParams.OnClickConfirm != null)
             {
                 dialogParams.OnClickConfirm(dialogParams.UserData);

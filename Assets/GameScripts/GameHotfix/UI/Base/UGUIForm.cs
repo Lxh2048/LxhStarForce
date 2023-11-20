@@ -5,15 +5,15 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameEntry = GameFrame.Main.GameEntry;
+using GameEntry = Game.Main.GameEntry;
 using UnityGameFramework.Runtime;
 using System.Collections.Generic;
 using System.Collections;
+using Game.Main;
 using UnityEngine.UI;
 using UnityEngine;
-using GameFrame.Main;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     public abstract class UGUIForm : UIFormLogic
     {
@@ -50,7 +50,7 @@ namespace GameFrame.Hotfix
 
             if (ignoreFade)
             {
-                GameEntry.UI.CloseUIForm(this);
+                Main.GameEntry.UI.CloseUIForm(this);
             }
             else
             {
@@ -60,7 +60,7 @@ namespace GameFrame.Hotfix
 
         public void PlayUISound(int uiSoundId)
         {
-            GameEntry.Sound.PlayUISound(uiSoundId);
+            Main.GameEntry.Sound.PlayUISound(uiSoundId);
         }
 
         public static void SetMainFont(Font mainFont)
@@ -102,7 +102,7 @@ namespace GameFrame.Hotfix
                 texts[i].font = s_MainFont;
                 if (!string.IsNullOrEmpty(texts[i].text))
                 {
-                    texts[i].text = GameEntry.Localization.GetString(texts[i].text);
+                    texts[i].text = Main.GameEntry.Localization.GetString(texts[i].text);
                 }
             }
         }

@@ -9,7 +9,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using UnityEngine;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     public class CommonButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
     {

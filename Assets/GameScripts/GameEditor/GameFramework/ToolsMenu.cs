@@ -5,7 +5,7 @@
 
 using UnityEditor;
 
-namespace GameFrame.Editor
+namespace Game.Editor
 {
     public sealed class ToolsMenu
     {

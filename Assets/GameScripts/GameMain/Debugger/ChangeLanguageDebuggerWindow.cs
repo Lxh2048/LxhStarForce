@@ -11,7 +11,7 @@ using GameFramework.Debugger;
 
 using UnityEngine;
 
-namespace GameFrame.Main
+namespace Game.Main
 {
     public class ChangeLanguageDebuggerWindow : IDebuggerWindow
     {

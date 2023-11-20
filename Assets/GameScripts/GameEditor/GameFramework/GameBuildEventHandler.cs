@@ -13,7 +13,7 @@ using UnityGameFramework.Editor.ResourceTools;
 using System.Collections.Generic;
 using System.Text;
 
-namespace GameFrame.Editor
+namespace Game.Editor
 {
     public sealed class GameBuildEventHandler : IBuildEventHandler
     {

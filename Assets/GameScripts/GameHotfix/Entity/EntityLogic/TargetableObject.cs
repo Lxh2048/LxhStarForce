@@ -5,12 +5,12 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameEntry = GameFrame.Main.GameEntry;
+using Game.Main;
+using GameEntry = Game.Main.GameEntry;
 using UnityGameFramework.Runtime;
-using GameFrame.Main;
 using UnityEngine;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     /// <summary>
     /// 可作为目标的实体类。

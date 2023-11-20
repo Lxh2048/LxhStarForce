@@ -5,11 +5,11 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameEntry = GameFrame.Main.GameEntry;
+using GameEntry = Game.Main.GameEntry;
 using UnityGameFramework.Runtime;
 using UnityEngine;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     /// <summary>
     /// 特效类。
@@ -50,7 +50,7 @@ namespace GameFrame.Hotfix
             m_ElapseSeconds += elapseSeconds;
             if (m_ElapseSeconds >= m_EffectData.KeepTime)
             {
-                GameEntry.Entity.HideEntity(this);
+                Main.GameEntry.Entity.HideEntity(this);
             }
         }
     }

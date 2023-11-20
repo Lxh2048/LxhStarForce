@@ -7,15 +7,15 @@
 
 using UnityGameFramework.Runtime;
 using GameFramework.DataTable;
-using GameFrame.Main;
 using UnityEngine;
 using System;
+using Game.Main;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     public static class DataTableExtension
     {
-        private const string DataRowClassPrefixName = "GameFrame.Hotfix.DR";
+        private const string DataRowClassPrefixName = "Game.Hotfix.DR";
         public static readonly char[] DataSplitSeparators = new char[] { '\t' };
         public static readonly char[] DataTrimSeparators = new char[] { '\"' };
 

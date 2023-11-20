@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     [StructLayout(LayoutKind.Auto)]
     public struct CampPair

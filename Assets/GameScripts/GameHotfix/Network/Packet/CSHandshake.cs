@@ -3,9 +3,9 @@
 // CreateTime: 2022/8/9   18:30:34
 // -----------------------------------------------
 
-using GameFrame.Main;
+using Game.Main;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     /// <summary>
     /// 握手消息包

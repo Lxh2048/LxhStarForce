@@ -6,16 +6,16 @@
 //------------------------------------------------------------
 
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
-using GameEntry = GameFrame.Main.GameEntry;
+using GameEntry = Game.Main.GameEntry;
 using UnityGameFramework.Runtime;
 using System.Collections.Generic;
+using Game.Main;
 using GameFramework.Resource;
-using GameFrame.Main;
 using GameFramework.Event;
 using GameFramework;
 using UnityEngine;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     public class PrefabData
     {
@@ -93,7 +93,7 @@ namespace GameFrame.Hotfix
             // Preload fonts
             LoadFont("MainFont");
 
-            LoadPreFab("HP Bar");
+            LoadModulePrefab("HP/HP Bar");
         }
 
         private void LoadConfig(string configName)
@@ -134,11 +134,11 @@ namespace GameFrame.Hotfix
                 }));
         }
 
-        private void LoadPreFab(string perfabName)
+        private void LoadModulePrefab(string perfabName)
         {
             m_LoadedFlag.Add(perfabName, false);
             PrefabData prefabData = new PrefabData() { prefabName = perfabName };
-            string assetName = AssetUtility.GetPerfabsAsset(perfabName);
+            string assetName = AssetUtility.GetModulePrefabsAsset(perfabName);
             GameEntry.Resource.LoadAsset(assetName, new LoadAssetCallbacks(OnLoadPerfabAssetSucceed, OnLoadPerfabAssetFailured), prefabData);
         }
 

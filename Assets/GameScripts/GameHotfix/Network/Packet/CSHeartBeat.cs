@@ -5,11 +5,11 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFrame.Main;
 using ProtoBuf;
 using System;
+using Game.Main;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     [Serializable, ProtoContract(Name = @"CSHeartBeat")]
     public class CSHeartBeat : CSPacketBase

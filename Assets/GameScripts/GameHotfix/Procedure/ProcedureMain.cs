@@ -4,12 +4,12 @@
 // -----------------------------------------------
 
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
-using GameEntry = GameFrame.Main.GameEntry;
+using GameEntry = Game.Main.GameEntry;
 using System.Collections.Generic;
+using Game.Main;
 using UnityGameFramework.Runtime;
-using GameFrame.Main;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     public class ProcedureMain : ProcedureBase
     {

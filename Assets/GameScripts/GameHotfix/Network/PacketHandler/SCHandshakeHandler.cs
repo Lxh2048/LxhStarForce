@@ -5,12 +5,12 @@
 
 using UnityGameFramework.Runtime;
 using GameFramework.Network;
-using GameFrame.Main;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Game.Main;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     // 握手消息助手
     public class SCHandshakeHandler : PacketHandlerBase

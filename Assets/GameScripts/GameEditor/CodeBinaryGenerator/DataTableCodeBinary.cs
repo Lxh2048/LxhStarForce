@@ -2,15 +2,16 @@
 // Copyright © GameFramework. All rights reserved.
 // CreateTime: 2021/5/6   15:21:19
 // -----------------------------------------------
-using GameFrame.Editor.DataTableTools;
-using GameFrame.Main;
+
 using GameFramework;
 using System.Text;
 using UnityEditor;
 using UnityEngine;
 using System.IO;
+using Game.Editor.DataTableTools;
+using Game.Main;
 
-namespace GameFrame.Editor
+namespace Game.Editor
 {
     public class DataTableCodeBinary
     {

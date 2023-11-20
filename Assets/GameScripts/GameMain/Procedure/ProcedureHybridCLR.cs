@@ -12,7 +12,7 @@ using GameFramework.Resource;
 using UnityEngine;
 using HybridCLR;
 
-namespace GameFrame.Main
+namespace Game.Main
 {
     public class ProcedureHybridCLR : ProcedureBase
     {
@@ -49,9 +49,9 @@ namespace GameFrame.Main
         {
             base.OnEnter(procedureOwner);
             m_LoadedFlag.Clear();
-
-            LoadAOTAssemblies();
+            
 #if !UNITY_EDITOR
+            LoadAOTAssemblies();
             LoadHotAssemblies();
 #endif
         }
@@ -74,15 +74,14 @@ namespace GameFrame.Main
         // 进入 热更新程序
         private void StartHotfixEntry()
         {
-            LoadMetadataForAOTAssemblies();
-
 #if !UNITY_EDITOR
+            LoadMetadataForAOTAssemblies();
             LoadForHotAssemblies();
 #endif
 
             Log.Info("<color=green> ProcedureToHuaTuo Load Native/GameHotfixEntry.Perfab </color>");
 
-            string assetName = AssetUtility.GetPerfabsAsset("Native/GameHotfixEntry");
+            string assetName = AssetUtility.GetModulePrefabsAsset("Native/GameHotfixEntry");
             GameEntry.Resource.LoadAsset(assetName, new LoadAssetCallbacks((assetName, asset, duration, userData) =>
             {//加载成功
                 var GameHotfixEntry = GameObject.Instantiate((asset as GameObject), GameEntry.BuiltinData.transform.parent);
@@ -107,7 +106,7 @@ namespace GameFrame.Main
         private void LoadHotAssemblies()
         {
             LoadHotDll("Assembly-CSharp.dll");
-            LoadAOTDll("GameFrame.Hotfix.dll");
+            LoadAOTDll("Game.Hotfix.dll");
         }
 
         /// <summary>
@@ -134,7 +133,7 @@ namespace GameFrame.Main
             byte[] csharpBytes = m_loadedHotifx["Assembly-CSharp.dll"];
             System.Reflection.Assembly.Load(csharpBytes);
 
-            //byte[] mainBytes = m_loadedHotifx["GameFrame.Main.dll"];
+            //byte[] mainBytes = m_loadedHotifx["Game.Main.dll"];
             //System.Reflection.Assembly.Load(mainBytes);
         }
 

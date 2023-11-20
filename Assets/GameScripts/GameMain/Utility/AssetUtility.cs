@@ -7,7 +7,7 @@
 
 using GameFramework;
 
-namespace GameFrame.Main
+namespace Game.Main
 {
     public static class AssetUtility
     {
@@ -71,9 +71,9 @@ namespace GameFrame.Main
             return Utility.Text.Format("Assets/GameRes/HotAssemblies/AOT/{0}.bytes", assetName);
         }
 
-        public static string GetPerfabsAsset(string assetName)
+        public static string GetModulePrefabsAsset(string assetName)
         {
-            return Utility.Text.Format("Assets/GameRes/Prefabs/{0}.prefab", assetName);
+            return Utility.Text.Format("Assets/GameRes/ModulePrefabs/{0}.prefab", assetName);
         }
     }
 }

@@ -7,11 +7,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using Game.Main;
 using UnityGameFramework.Runtime;
-using GameFrame.Main;
-using GameEntry = GameFrame.Main.GameEntry;
+using GameEntry = Game.Main.GameEntry;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     public class NetworkTestChannelHelper : INetworkChannelHelper
     {

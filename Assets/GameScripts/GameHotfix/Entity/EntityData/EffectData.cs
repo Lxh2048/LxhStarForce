@@ -5,11 +5,11 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFrame.Main;
+using Game.Main;
 using UnityEngine;
 using System;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     [Serializable]
     public class EffectData : EntityData

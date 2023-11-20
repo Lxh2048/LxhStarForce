@@ -5,11 +5,11 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using Game.Main;
 using UnityGameFramework.Runtime;
 using GameFramework.Network;
-using GameFrame.Main;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     public class SCHeartBeatHandler : PacketHandlerBase
     {

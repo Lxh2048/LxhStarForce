@@ -5,14 +5,14 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameEntry = GameFrame.Main.GameEntry;
+using Game.Main;
+using GameEntry = Game.Main.GameEntry;
 using UnityGameFramework.Runtime;
 using UnityEngine.UI;
-using GameFrame.Main;
 using GameFramework;
 using UnityEngine;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     public class DialogForm : UGUIForm
     {

@@ -5,14 +5,14 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameEntry = GameFrame.Main.GameEntry;
+using GameEntry = Game.Main.GameEntry;
 using System.Collections.Generic;
 using GameFramework.DataTable;
-using GameFrame.Main;
 using UnityEngine;
 using System;
+using Game.Main;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     [Serializable]
     public abstract class AircraftData : TargetableObjectData

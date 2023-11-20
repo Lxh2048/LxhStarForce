@@ -5,7 +5,7 @@
 
 using GameFramework.Event;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
 
     public class ProcedureChangedEventArgs : GameEventArgs

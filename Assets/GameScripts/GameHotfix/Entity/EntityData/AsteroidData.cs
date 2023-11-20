@@ -6,12 +6,12 @@
 //------------------------------------------------------------
 
 using GameFramework.DataTable;
-using GameEntry = GameFrame.Main.GameEntry;
-using GameFrame.Main;
+using GameEntry = Game.Main.GameEntry;
 using UnityEngine;
 using System;
+using Game.Main;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     [Serializable]
     public class AsteroidData : TargetableObjectData

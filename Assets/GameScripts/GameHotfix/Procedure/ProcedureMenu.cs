@@ -2,14 +2,15 @@
 // Copyright © GameFramework. All rights reserved.
 // CreateTime: 2022/7/1   10:44:59
 // -----------------------------------------------
+
+using Game.Main;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
-using GameEntry = GameFrame.Main.GameEntry;
+using GameEntry = Game.Main.GameEntry;
 using UnityGameFramework.Runtime;
 
 using GameFramework.Event;
-using GameFrame.Main;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     public class ProcedureMenu : ProcedureBase
     {

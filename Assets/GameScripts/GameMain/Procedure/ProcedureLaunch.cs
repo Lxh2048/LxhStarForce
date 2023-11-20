@@ -12,7 +12,7 @@ using System;
 using GameFramework.Sound;
 using GameFramework;
 
-namespace GameFrame.Main
+namespace Game.Main
 {
     public class ProcedureLaunch : ProcedureBase
     {

@@ -5,11 +5,11 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameEntry = GameFrame.Main.GameEntry;
+using GameEntry = Game.Main.GameEntry;
 using UnityGameFramework.Runtime;
 using UnityEngine;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     public class HideByBoundary : MonoBehaviour
     {
@@ -24,7 +24,7 @@ namespace GameFrame.Hotfix
                 return;
             }
 
-            GameEntry.Entity.HideEntity(entity);
+            Main.GameEntry.Entity.HideEntity(entity);
         }
     }
 }

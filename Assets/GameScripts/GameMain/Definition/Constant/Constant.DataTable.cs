@@ -3,7 +3,7 @@
 // CreateTime: 2022/7/1   10:19:39
 // -----------------------------------------------
 
-namespace GameFrame.Main
+namespace Game.Main
 {
     public static class DataTable
     {

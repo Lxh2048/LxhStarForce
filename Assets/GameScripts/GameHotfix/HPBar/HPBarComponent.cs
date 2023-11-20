@@ -5,13 +5,13 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameEntry = GameFrame.Main.GameEntry;
+using GameEntry = Game.Main.GameEntry;
 using UnityGameFramework.Runtime;
 using System.Collections.Generic;
 using GameFramework.ObjectPool;
 using UnityEngine;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     public class HPBarComponent : GameFrameworkComponent
     {
@@ -37,7 +37,7 @@ namespace GameFrame.Hotfix
             }
 
             m_CachedCanvas = m_HPBarInstanceRoot.GetComponent<Canvas>();
-            m_HPBarItemObjectPool = GameEntry.ObjectPool.CreateSingleSpawnObjectPool<HPBarItemObject>("HPBarItem", m_InstancePoolCapacity);
+            m_HPBarItemObjectPool = Main.GameEntry.ObjectPool.CreateSingleSpawnObjectPool<HPBarItemObject>("HPBarItem", m_InstancePoolCapacity);
             m_ActiveHPBarItems = new List<HPBarItem>();
         }
 

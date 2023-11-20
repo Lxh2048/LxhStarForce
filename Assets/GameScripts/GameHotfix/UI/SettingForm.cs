@@ -5,15 +5,14 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameEntry = GameFrame.Main.GameEntry;
+using Game.Main;
+using GameEntry = Game.Main.GameEntry;
 using GameFramework.Localization;
 using UnityGameFramework.Runtime;
-
-using GameFrame.Main;
 using UnityEngine.UI;
 using UnityEngine;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     public class SettingForm : UGUIForm
     {
@@ -54,35 +53,35 @@ namespace GameFrame.Hotfix
 
         public void OnMusicMuteChanged(bool isOn)
         {
-            GameEntry.Sound.Mute("Music", !isOn);
+            Main.GameEntry.Sound.Mute("Music", !isOn);
             m_MusicVolumeSlider.gameObject.SetActive(isOn);
         }
 
         public void OnMusicVolumeChanged(float volume)
         {
-            GameEntry.Sound.SetVolume("Music", volume);
+            Main.GameEntry.Sound.SetVolume("Music", volume);
         }
 
         public void OnSoundMuteChanged(bool isOn)
         {
-            GameEntry.Sound.Mute("Sound", !isOn);
+            Main.GameEntry.Sound.Mute("Sound", !isOn);
             m_SoundVolumeSlider.gameObject.SetActive(isOn);
         }
 
         public void OnSoundVolumeChanged(float volume)
         {
-            GameEntry.Sound.SetVolume("Sound", volume);
+            Main.GameEntry.Sound.SetVolume("Sound", volume);
         }
 
         public void OnUISoundMuteChanged(bool isOn)
         {
-            GameEntry.Sound.Mute("UISound", !isOn);
+            Main.GameEntry.Sound.Mute("UISound", !isOn);
             m_UISoundVolumeSlider.gameObject.SetActive(isOn);
         }
 
         public void OnUISoundVolumeChanged(float volume)
         {
-            GameEntry.Sound.SetVolume("UISound", volume);
+            Main.GameEntry.Sound.SetVolume("UISound", volume);
         }
 
         public void OnEnglishSelected(bool isOn)
@@ -131,7 +130,7 @@ namespace GameFrame.Hotfix
 
         public void OnSubmitButtonClick()
         {
-            if (m_SelectedLanguage == GameEntry.Localization.Language)
+            if (m_SelectedLanguage == Main.GameEntry.Localization.Language)
             {
                 Close();
                 return;

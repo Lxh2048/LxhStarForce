@@ -9,8 +9,9 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
+/[Ll]xhConfig/
 /[Ll]xh[Oo]ut[Pp]ut/
-/HybridCLRData
+/[Ll]xhHybridCLRData/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data

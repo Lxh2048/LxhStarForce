@@ -8,7 +8,7 @@
 using System;
 using UnityEngine;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     [Serializable]
     public abstract class EntityData

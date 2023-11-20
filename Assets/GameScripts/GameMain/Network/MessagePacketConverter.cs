@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System;
 
-namespace GameFrame.Main
+namespace Game.Main
 {
     public class MessagePacketConverter : IReference
     {

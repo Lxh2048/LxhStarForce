@@ -13,7 +13,7 @@ using GameFramework.Event;
 using GameFramework;
 using UnityEngine;
 
-namespace GameFrame.Main
+namespace Game.Main
 {
     public class ProcedureCheckVersion : ProcedureBase
     {

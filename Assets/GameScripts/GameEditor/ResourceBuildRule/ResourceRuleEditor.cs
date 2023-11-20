@@ -596,6 +596,7 @@ namespace UGFExtensions.Editor.ResourceTools
                 {
                     ForeachDir(dirInfo);
                 }
+                
             }
         }
 

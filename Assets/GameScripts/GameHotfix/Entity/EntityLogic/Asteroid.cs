@@ -5,12 +5,12 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameEntry = GameFrame.Main.GameEntry;
+using GameEntry = Game.Main.GameEntry;
 using UnityGameFramework.Runtime;
-using GameFrame.Main;
+using Game.Main;
 using UnityEngine;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     /// <summary>
     /// 小行星类。
@@ -65,11 +65,11 @@ namespace GameFrame.Hotfix
         {
             base.OnDead(attacker);
 
-            GameEntry.Entity.ShowEffect(new EffectData(GameEntry.Entity.GenerateSerialId(), m_AsteroidData.DeadEffectId)
+            Main.GameEntry.Entity.ShowEffect(new EffectData(Main.GameEntry.Entity.GenerateSerialId(), m_AsteroidData.DeadEffectId)
             {
                 Position = CachedTransform.localPosition,
             });
-            GameEntry.Sound.PlaySound(m_AsteroidData.DeadSoundId);
+            Main.GameEntry.Sound.PlaySound(m_AsteroidData.DeadSoundId);
         }
 
         public override ImpactData GetImpactData()

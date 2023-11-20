@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFrame.Main
+namespace Game.Main
 {
     public abstract class ProcedureBase : GameFramework.Procedure.ProcedureBase
     {

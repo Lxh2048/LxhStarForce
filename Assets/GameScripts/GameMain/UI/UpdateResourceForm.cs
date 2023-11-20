@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace GameFrame.Main
+namespace Game.Main
 {
     public class UpdateResourceForm : MonoBehaviour
     {

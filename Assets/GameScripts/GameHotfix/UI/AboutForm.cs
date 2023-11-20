@@ -5,13 +5,13 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameEntry = GameFrame.Main.GameEntry;
+using GameEntry = Game.Main.GameEntry;
 using UnityGameFramework.Runtime;
 using UnityEngine.UI;
-using GameFrame.Main;
+using Game.Main;
 using UnityEngine;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     public class AboutForm : UGUIForm
     {
@@ -52,7 +52,7 @@ namespace GameFrame.Hotfix
             m_Transform.SetLocalPositionY(m_InitPosition);
 
             // 换个音乐
-            GameEntry.Sound.PlayMusic(3);
+            Main.GameEntry.Sound.PlayMusic(3);
         }
 
 #if UNITY_2017_3_OR_NEWER
@@ -64,7 +64,7 @@ namespace GameFrame.Hotfix
             base.OnClose(isShutdown, userData);
 
             // 还原音乐
-            GameEntry.Sound.PlayMusic(1);
+            Main.GameEntry.Sound.PlayMusic(1);
         }
 
 #if UNITY_2017_3_OR_NEWER

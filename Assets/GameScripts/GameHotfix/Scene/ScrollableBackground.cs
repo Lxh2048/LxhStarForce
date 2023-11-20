@@ -7,7 +7,7 @@
 
 using UnityEngine;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     public class ScrollableBackground : MonoBehaviour
     {

@@ -7,7 +7,7 @@
 
 using UnityEngine;
 
-namespace GameFrame.Main
+namespace Game.Main
 {
     /// <summary>
     /// 游戏入口。

@@ -5,13 +5,12 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameEntry = GameFrame.Main.GameEntry;
+using Game.Main;
+using GameEntry = Game.Main.GameEntry;
 using UnityGameFramework.Runtime;
-
-using GameFrame.Main;
 using UnityEngine;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     public class MenuForm : UGUIForm
     {
@@ -27,7 +26,7 @@ namespace GameFrame.Hotfix
 
         public void OnSettingButtonClick()
         {
-            GameEntry.UI.OpenUIForm(UIFormId.SettingForm);
+            Main.GameEntry.UI.OpenUIForm(UIFormId.SettingForm);
         }
 
         public void OnAboutButtonClick()

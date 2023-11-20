@@ -11,10 +11,10 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityGameFramework.Runtime;
-using GameEntry = GameFrame.Main.GameEntry;
-using GameFrame.Main;
+using GameEntry = Game.Main.GameEntry;
+using Game.Main;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     /// <summary>
     /// AI 工具类。
@@ -169,7 +169,7 @@ namespace GameFrame.Hotfix
                 int entityDamageHP = CalcDamageHP(bulletImpactData.Attack, entityImpactData.Defense);
 
                 entity.ApplyDamage(bullet, entityDamageHP);
-                GameEntry.Entity.HideEntity(bullet);
+                Main.GameEntry.Entity.HideEntity(bullet);
                 return;
             }
         }

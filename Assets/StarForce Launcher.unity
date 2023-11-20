@@ -344,7 +344,7 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 11405216, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_EntranceProcedureTypeName
-      value: GameFrame.Main.ProcedureLaunch
+      value: Game.Main.ProcedureLaunch
       objectReference: {fileID: 0}
     - target: {fileID: 11405216, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_AvailableProcedureTypeNames.Array.size
@@ -352,35 +352,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11405216, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_AvailableProcedureTypeNames.Array.data[0]
-      value: GameFrame.Main.ProcedureCheckResources
+      value: Game.Main.ProcedureCheckResources
       objectReference: {fileID: 0}
     - target: {fileID: 11405216, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_AvailableProcedureTypeNames.Array.data[1]
-      value: GameFrame.Main.ProcedureCheckVersion
+      value: Game.Main.ProcedureCheckVersion
       objectReference: {fileID: 0}
     - target: {fileID: 11405216, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_AvailableProcedureTypeNames.Array.data[2]
-      value: GameFrame.Main.ProcedureHybridCLR
+      value: Game.Main.ProcedureHybridCLR
       objectReference: {fileID: 0}
     - target: {fileID: 11405216, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_AvailableProcedureTypeNames.Array.data[3]
-      value: GameFrame.Main.ProcedureInitResources
+      value: Game.Main.ProcedureInitResources
       objectReference: {fileID: 0}
     - target: {fileID: 11405216, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_AvailableProcedureTypeNames.Array.data[4]
-      value: GameFrame.Main.ProcedureLaunch
+      value: Game.Main.ProcedureLaunch
       objectReference: {fileID: 0}
     - target: {fileID: 11405216, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_AvailableProcedureTypeNames.Array.data[5]
-      value: GameFrame.Main.ProcedureSplash
+      value: Game.Main.ProcedureSplash
       objectReference: {fileID: 0}
     - target: {fileID: 11405216, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_AvailableProcedureTypeNames.Array.data[6]
-      value: GameFrame.Main.ProcedureUpdateResources
+      value: Game.Main.ProcedureUpdateResources
       objectReference: {fileID: 0}
     - target: {fileID: 11405216, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_AvailableProcedureTypeNames.Array.data[7]
-      value: GameFrame.Main.ProcedureUpdateVersion
+      value: Game.Main.ProcedureUpdateVersion
       objectReference: {fileID: 0}
     - target: {fileID: 11405216, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_AvailableProcedureTypeNames.Array.data[8]
@@ -485,7 +485,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11454530, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_UIGroupHelperTypeName
-      value: GameFrame.Main.UGUIGroupHelper
+      value: Game.Main.UGUIGroupHelper
       objectReference: {fileID: 0}
     - target: {fileID: 11454530, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_UIGroups.Array.data[0].m_Name
@@ -503,9 +503,13 @@ PrefabInstance:
       propertyPath: m_UIGroups.Array.data[1].m_Depth
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11459312, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
+      propertyPath: m_SettingHelperTypeName
+      value: UnityGameFramework.Runtime.PlayerPrefsSettingHelper
+      objectReference: {fileID: 0}
     - target: {fileID: 11461470, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_LocalizationHelperTypeName
-      value: GameFrame.Main.XmlLocalizationHelper
+      value: Game.Main.XmlLocalizationHelper
       objectReference: {fileID: 0}
     - target: {fileID: 11463816, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_LoadAssetCountPerFrame
@@ -649,7 +653,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11499388, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_JsonHelperTypeName
-      value: GameFrame.Main.LitJsonHelper
+      value: Game.Main.LitJsonHelper
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
@@ -712,9 +716,10 @@ MonoBehaviour:
     type: 3}
   m_DefaultDictionaryTextAsset: {fileID: 4900000, guid: 00759be143ffa5445b151c2540612e8f,
     type: 3}
-  m_UpdateResourceFormTemplate: {fileID: 11487720, guid: a6c731de80e9d824d8f657301a357269,
+  m_UpdateResourceFormTemplate: {fileID: 6874066602356798193, guid: a6c731de80e9d824d8f657301a357269,
     type: 3}
-  m_NativeDialogFormTemplate: {fileID: 0}
+  m_NativeDialogFormTemplate: {fileID: 3601452004815745198, guid: 32f58d7fae5464b42946cd8d6ed14108,
+    type: 3}
 --- !u!850595691 &669429738
 LightingSettings:
   m_ObjectHideFlags: 0

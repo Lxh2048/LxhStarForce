@@ -1,11 +1,11 @@
-﻿using GameFrame.Main;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Net;
+using Game.Main;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     public class NetworkTest : MonoBehaviour
     {

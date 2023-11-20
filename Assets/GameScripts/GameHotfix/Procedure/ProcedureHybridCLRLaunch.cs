@@ -3,14 +3,14 @@
 // CreateTime: 2022/8/2   18:20:0
 // -----------------------------------------------
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
-using GameEntry = GameFrame.Main.GameEntry;
+using GameEntry = Game.Main.GameEntry;
 using UnityGameFramework.Runtime;
 using System.Collections.Generic;
+using Game.Main;
 using GameFramework.Resource;
-using GameFrame.Main;
 using UnityEngine;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     public class ProcedureHybridCLRLaunch : ProcedureBase
     {

@@ -5,12 +5,12 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameEntry = GameFrame.Main.GameEntry;
+using GameEntry = Game.Main.GameEntry;
 using UnityGameFramework.Runtime;
 using GameFramework;
 using UnityEngine;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     /// <summary>
     /// 武器类。
@@ -48,7 +48,7 @@ namespace GameFrame.Hotfix
                 return;
             }
 
-            GameEntry.Entity.AttachEntity(Entity, m_WeaponData.OwnerId, AttachPoint);
+            Main.GameEntry.Entity.AttachEntity(Entity, m_WeaponData.OwnerId, AttachPoint);
         }
 
 #if UNITY_2017_3_OR_NEWER
@@ -71,11 +71,11 @@ namespace GameFrame.Hotfix
             }
 
             m_NextAttackTime = Time.time + m_WeaponData.AttackInterval;
-            GameEntry.Entity.ShowBullet(new BulletData(GameEntry.Entity.GenerateSerialId(), m_WeaponData.BulletId, m_WeaponData.OwnerId, m_WeaponData.OwnerCamp, m_WeaponData.Attack, m_WeaponData.BulletSpeed)
+            Main.GameEntry.Entity.ShowBullet(new BulletData(Main.GameEntry.Entity.GenerateSerialId(), m_WeaponData.BulletId, m_WeaponData.OwnerId, m_WeaponData.OwnerCamp, m_WeaponData.Attack, m_WeaponData.BulletSpeed)
             {
                 Position = CachedTransform.position,
             });
-            GameEntry.Sound.PlaySound(m_WeaponData.BulletSoundId);
+            Main.GameEntry.Sound.PlaySound(m_WeaponData.BulletSoundId);
         }
     }
 }

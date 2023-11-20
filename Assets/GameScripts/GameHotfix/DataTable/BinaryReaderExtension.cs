@@ -9,7 +9,7 @@ using System;
 using System.IO;
 using UnityEngine;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     public static class BinaryReaderExtension
     {

@@ -7,7 +7,7 @@
 
 using System.Runtime.InteropServices;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     [StructLayout(LayoutKind.Auto)]
     public struct ImpactData

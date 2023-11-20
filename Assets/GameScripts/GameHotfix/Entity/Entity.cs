@@ -9,7 +9,7 @@ using GameFramework;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     public abstract class Entity : EntityLogic
     {

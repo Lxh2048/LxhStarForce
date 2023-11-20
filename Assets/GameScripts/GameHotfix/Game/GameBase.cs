@@ -5,12 +5,12 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameEntry = GameFrame.Main.GameEntry;
+using GameEntry = Game.Main.GameEntry;
 using UnityGameFramework.Runtime;
 using GameFramework.Event;
 using UnityEngine;
 
-namespace GameFrame.Hotfix
+namespace Game.Hotfix
 {
     public abstract class GameBase
     {
@@ -35,8 +35,8 @@ namespace GameFrame.Hotfix
 
         public virtual void Initialize()
         {
-            GameEntry.Event.Subscribe(ShowEntitySuccessEventArgs.EventId, OnShowEntitySuccess);
-            GameEntry.Event.Subscribe(ShowEntityFailureEventArgs.EventId, OnShowEntityFailure);
+            Main.GameEntry.Event.Subscribe(ShowEntitySuccessEventArgs.EventId, OnShowEntitySuccess);
+            Main.GameEntry.Event.Subscribe(ShowEntityFailureEventArgs.EventId, OnShowEntityFailure);
 
             SceneBackground = Object.FindObjectOfType<ScrollableBackground>();
             if (SceneBackground == null)
@@ -46,7 +46,7 @@ namespace GameFrame.Hotfix
             }
 
             SceneBackground.VisibleBoundary.gameObject.GetOrAddComponent<HideByBoundary>();
-            GameEntry.Entity.ShowMyAircraft(new MyAircraftData(GameEntry.Entity.GenerateSerialId(), 10000)
+            Main.GameEntry.Entity.ShowMyAircraft(new MyAircraftData(Main.GameEntry.Entity.GenerateSerialId(), 10000)
             {
                 Name = "My Aircraft",
                 Position = Vector3.zero,
@@ -58,8 +58,8 @@ namespace GameFrame.Hotfix
 
         public virtual void Shutdown()
         {
-            GameEntry.Event.Unsubscribe(ShowEntitySuccessEventArgs.EventId, OnShowEntitySuccess);
-            GameEntry.Event.Unsubscribe(ShowEntityFailureEventArgs.EventId, OnShowEntityFailure);
+            Main.GameEntry.Event.Unsubscribe(ShowEntitySuccessEventArgs.EventId, OnShowEntitySuccess);
+            Main.GameEntry.Event.Unsubscribe(ShowEntityFailureEventArgs.EventId, OnShowEntityFailure);
         }
 
         public virtual void Update(float elapseSeconds, float realElapseSeconds)

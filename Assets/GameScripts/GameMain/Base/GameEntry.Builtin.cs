@@ -8,7 +8,7 @@
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace GameFrame.Main
+namespace Game.Main
 {
     /// <summary>
     /// 游戏入口。

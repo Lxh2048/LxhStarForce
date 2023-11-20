@@ -23,7 +23,7 @@ namespace UnityGameFramework.Editor
 #endif
             // "Assembly-CSharp",
             
-            "GameFrame.Main",
+            "Game.Main",
         };
 
         private static readonly string[] RuntimeOrEditorAssemblyNames =
@@ -32,8 +32,8 @@ namespace UnityGameFramework.Editor
             "UnityGameFramework.Runtime",
 #endif
             // "Assembly-CSharp",
-            "GameFrame.Editor",
-            "GameFrame.Main",
+            "Game.Editor",
+            "Game.Main",
 #if UNITY_2017_3_OR_NEWER
             "UnityGameFramework.Editor",
 #endif

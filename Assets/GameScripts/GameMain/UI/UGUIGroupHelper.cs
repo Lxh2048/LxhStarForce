@@ -9,7 +9,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
 
-namespace GameFrame.Main
+namespace Game.Main
 {
     /// <summary>
     /// uGUI 界面组辅助器。
