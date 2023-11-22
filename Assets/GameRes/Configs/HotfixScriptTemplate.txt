@@ -1,4 +1,4 @@
-﻿using GameEntry = GameFrame.Main.GameEntry;
+﻿using GameEntry = Game.Main.GameEntry;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;

@@ -56,4 +56,10 @@ public class LubanGenerator
     {
         ProcessRun("gen_code_json_client_server.bat");
     }
+    
+    [MenuItem("LxhTools/Luban/生成cs配置文件名数组")]
+    private static void GenCodeJsonConfigName()
+    {
+        ProcessRun("py_json_configNames.bat");
+    }
 }

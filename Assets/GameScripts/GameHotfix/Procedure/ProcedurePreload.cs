@@ -103,7 +103,7 @@ namespace Game.Hotfix
             // }
             
             // Preload luban tables
-            foreach (string lubanTableName in DataTable.LubanTableNames)
+            foreach (string lubanTableName in LubanTable.LubanTableNames)
             {
                 LoadLubanTable(lubanTableName);
             }
