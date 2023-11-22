@@ -9,7 +9,7 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
-/[Ll]xhConfig/
+#/[Ll]xhConfig/
 /[Ll]xh[Oo]ut[Pp]ut/
 /[Ll]xhHybridCLRData/
 
