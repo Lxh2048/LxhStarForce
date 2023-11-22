@@ -1,0 +1,30 @@
+[
+  {
+    "Id": 1,
+    "AssetName": "Main/DialogForm",
+    "UIGroupName": "Default",
+    "AllowMultiInstance": true,
+    "PauseCoveredUIForm": true
+  },
+  {
+    "Id": 100,
+    "AssetName": "Main/MenuForm",
+    "UIGroupName": "Default",
+    "AllowMultiInstance": false,
+    "PauseCoveredUIForm": true
+  },
+  {
+    "Id": 101,
+    "AssetName": "Main/SettingForm",
+    "UIGroupName": "Default",
+    "AllowMultiInstance": false,
+    "PauseCoveredUIForm": true
+  },
+  {
+    "Id": 102,
+    "AssetName": "Main/AboutForm",
+    "UIGroupName": "Default",
+    "AllowMultiInstance": false,
+    "PauseCoveredUIForm": true
+  }
+]

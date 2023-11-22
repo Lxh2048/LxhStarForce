@@ -46,7 +46,7 @@ namespace Game.Hotfix
                 return;
             }
 
-            Main.GameEntry.Entity.AttachEntity(Entity, m_ArmorData.OwnerId, AttachPoint);
+            GameEntry.Entity.AttachEntity(Entity, m_ArmorData.OwnerId, AttachPoint);
         }
 
 #if UNITY_2017_3_OR_NEWER

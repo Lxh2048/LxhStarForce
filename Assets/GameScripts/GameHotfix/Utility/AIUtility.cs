@@ -169,7 +169,7 @@ namespace Game.Hotfix
                 int entityDamageHP = CalcDamageHP(bulletImpactData.Attack, entityImpactData.Defense);
 
                 entity.ApplyDamage(bullet, entityDamageHP);
-                Main.GameEntry.Entity.HideEntity(bullet);
+                GameEntry.Entity.HideEntity(bullet);
                 return;
             }
         }

@@ -35,18 +35,20 @@ namespace Game.Hotfix
         public WeaponData(int entityId, int typeId, int ownerId, CampType ownerCamp)
             : base(entityId, typeId, ownerId, ownerCamp)
         {
-            IDataTable<DRWeapon> dtWeapon = GameEntry.DataTable.GetDataTable<DRWeapon>();
-            DRWeapon drWeapon = dtWeapon.GetDataRow(TypeId);
-            if (drWeapon == null)
+            if (GameEntry.LubanTable.TryGetTables(out Cfg.Tables tables))
             {
-                return;
-            }
+                var tbWeapon = tables.TbWeapon.Get(typeId);
+                if (tbWeapon == null)
+                {
+                    return;
+                }
 
-            m_Attack = drWeapon.Attack;
-            m_AttackInterval = drWeapon.AttackInterval;
-            m_BulletId = drWeapon.BulletId;
-            m_BulletSpeed = drWeapon.BulletSpeed;
-            m_BulletSoundId = drWeapon.BulletSoundId;
+                m_Attack = tbWeapon.Attack;
+                m_AttackInterval = tbWeapon.AttackInterval;
+                m_BulletId = tbWeapon.BulletId;
+                m_BulletSpeed = tbWeapon.BulletSpeed;
+                m_BulletSoundId = tbWeapon.BulletSoundId;
+            }
         }
 
         /// <summary>

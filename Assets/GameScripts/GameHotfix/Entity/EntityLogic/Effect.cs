@@ -50,7 +50,7 @@ namespace Game.Hotfix
             m_ElapseSeconds += elapseSeconds;
             if (m_ElapseSeconds >= m_EffectData.KeepTime)
             {
-                Main.GameEntry.Entity.HideEntity(this);
+                GameEntry.Entity.HideEntity(this);
             }
         }
     }

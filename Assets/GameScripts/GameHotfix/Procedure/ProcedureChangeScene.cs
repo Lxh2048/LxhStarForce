@@ -56,16 +56,17 @@ namespace Game.Hotfix
 
             int sceneId = procedureOwner.GetData<VarInt32>("NextSceneId");
             m_ChangeToMenu = sceneId == MenuSceneId;
-            IDataTable<DRScene> dtScene = GameEntry.DataTable.GetDataTable<DRScene>();
-            DRScene drScene = dtScene.GetDataRow(sceneId);
-            if (drScene == null)
+            
+            if (!GameEntry.LubanTable.TryGetTables(out Cfg.Tables tables)) return;
+            var tbScene = tables.TbScene.Get(sceneId);
+            if (tbScene == null)
             {
                 Log.Warning("Can not load scene '{0}' from data table.", sceneId.ToString());
                 return;
             }
 
-            GameEntry.Scene.LoadScene(AssetUtility.GetSceneAsset(drScene.AssetName), Constant.AssetPriority.SceneAsset, this);
-            m_BackgroundMusicId = drScene.BackgroundMusicId;
+            GameEntry.Scene.LoadScene(AssetUtility.GetSceneAsset(tbScene.AssetName), Constant.AssetPriority.SceneAsset, this);
+            m_BackgroundMusicId = tbScene.BackgroundMusicId;
         }
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)

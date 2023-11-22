@@ -24,7 +24,7 @@ namespace Game.Hotfix
                 return;
             }
 
-            Main.GameEntry.Entity.HideEntity(entity);
+            GameEntry.Entity.HideEntity(entity);
         }
     }
 }

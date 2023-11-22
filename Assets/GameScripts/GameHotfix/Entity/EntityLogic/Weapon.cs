@@ -48,7 +48,7 @@ namespace Game.Hotfix
                 return;
             }
 
-            Main.GameEntry.Entity.AttachEntity(Entity, m_WeaponData.OwnerId, AttachPoint);
+            GameEntry.Entity.AttachEntity(Entity, m_WeaponData.OwnerId, AttachPoint);
         }
 
 #if UNITY_2017_3_OR_NEWER
@@ -71,11 +71,11 @@ namespace Game.Hotfix
             }
 
             m_NextAttackTime = Time.time + m_WeaponData.AttackInterval;
-            Main.GameEntry.Entity.ShowBullet(new BulletData(Main.GameEntry.Entity.GenerateSerialId(), m_WeaponData.BulletId, m_WeaponData.OwnerId, m_WeaponData.OwnerCamp, m_WeaponData.Attack, m_WeaponData.BulletSpeed)
+            GameEntry.Entity.ShowBullet(new BulletData(GameEntry.Entity.GenerateSerialId(), m_WeaponData.BulletId, m_WeaponData.OwnerId, m_WeaponData.OwnerCamp, m_WeaponData.Attack, m_WeaponData.BulletSpeed)
             {
                 Position = CachedTransform.position,
             });
-            Main.GameEntry.Sound.PlaySound(m_WeaponData.BulletSoundId);
+            GameEntry.Sound.PlaySound(m_WeaponData.BulletSoundId);
         }
     }
 }

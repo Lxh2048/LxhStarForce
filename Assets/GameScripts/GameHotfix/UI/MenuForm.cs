@@ -26,7 +26,7 @@ namespace Game.Hotfix
 
         public void OnSettingButtonClick()
         {
-            Main.GameEntry.UI.OpenUIForm(UIFormId.SettingForm);
+            GameEntry.UI.OpenUIForm(UIFormId.SettingForm);
         }
 
         public void OnAboutButtonClick()

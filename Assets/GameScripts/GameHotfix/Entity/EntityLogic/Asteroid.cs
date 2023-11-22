@@ -65,11 +65,11 @@ namespace Game.Hotfix
         {
             base.OnDead(attacker);
 
-            Main.GameEntry.Entity.ShowEffect(new EffectData(Main.GameEntry.Entity.GenerateSerialId(), m_AsteroidData.DeadEffectId)
+            GameEntry.Entity.ShowEffect(new EffectData(Main.GameEntry.Entity.GenerateSerialId(), m_AsteroidData.DeadEffectId)
             {
                 Position = CachedTransform.localPosition,
             });
-            Main.GameEntry.Sound.PlaySound(m_AsteroidData.DeadSoundId);
+            GameEntry.Sound.PlaySound(m_AsteroidData.DeadSoundId);
         }
 
         public override ImpactData GetImpactData()

@@ -27,9 +27,9 @@ namespace Game.Hotfix
             Log.Info("=======hello, HybridCLR 看到此条日志代表你成功运行了示例项目的热更新代码=======");
             Log.Info("<color=green> GameHotfixEntry.Awake </color>");
             // 重置流程组件，初始化热更新流程。
-            Main.GameEntry.Fsm.DestroyFsm<IProcedureManager>();
+            GameEntry.Fsm.DestroyFsm<IProcedureManager>();
             var procedureManager = GameFrameworkEntry.GetModule<IProcedureManager>();
-            Main.ProcedureBase[] procedures =
+            ProcedureBase[] procedures =
             {
                 new ProcedureChangeScene(),
                 new ProcedureMain(),

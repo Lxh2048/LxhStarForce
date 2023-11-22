@@ -23,9 +23,9 @@ namespace Game.Hotfix
         {
             soundComponent.StopMusic();
 
-            IDataTable<DRMusic> dtMusic = GameEntry.DataTable.GetDataTable<DRMusic>();
-            DRMusic drMusic = dtMusic.GetDataRow(musicId);
-            if (drMusic == null)
+            if (!GameEntry.LubanTable.TryGetTables(out Cfg.Tables tables)) return null;
+            var tbMusic = tables.TbMusic.Get(musicId);
+            if (tbMusic == null)
             {
                 Log.Warning("Can not load music '{0}' from data table.", musicId.ToString());
                 return null;
@@ -37,7 +37,7 @@ namespace Game.Hotfix
             playSoundParams.VolumeInSoundGroup = 1f;
             playSoundParams.FadeInSeconds = FadeVolumeDuration;
             playSoundParams.SpatialBlend = 0f;
-            s_MusicSerialId = soundComponent.PlaySound(AssetUtility.GetMusicAsset(drMusic.AssetName), "Music", Constant.AssetPriority.MusicAsset, playSoundParams, null, userData);
+            s_MusicSerialId = soundComponent.PlaySound(AssetUtility.GetMusicAsset(tbMusic.AssetName), "Music", Constant.AssetPriority.MusicAsset, playSoundParams, null, userData);
             return s_MusicSerialId;
         }
 
@@ -54,38 +54,38 @@ namespace Game.Hotfix
 
         public static int? PlaySound(this SoundComponent soundComponent, int soundId, Entity bindingEntity = null, object userData = null)
         {
-            IDataTable<DRSound> dtSound = GameEntry.DataTable.GetDataTable<DRSound>();
-            DRSound drSound = dtSound.GetDataRow(soundId);
-            if (drSound == null)
+            if (!GameEntry.LubanTable.TryGetTables(out Cfg.Tables tables)) return null;
+            var tbSound = tables.TbSound.Get(soundId);
+            if (tbSound == null)
             {
                 Log.Warning("Can not load sound '{0}' from data table.", soundId.ToString());
                 return null;
             }
 
             PlaySoundParams playSoundParams = PlaySoundParams.Create();
-            playSoundParams.Priority = drSound.Priority;
-            playSoundParams.Loop = drSound.Loop;
-            playSoundParams.VolumeInSoundGroup = drSound.Volume;
-            playSoundParams.SpatialBlend = drSound.SpatialBlend;
-            return soundComponent.PlaySound(AssetUtility.GetSoundAsset(drSound.AssetName), "Sound", Constant.AssetPriority.SoundAsset, playSoundParams, bindingEntity != null ? bindingEntity.Entity : null, userData);
+            playSoundParams.Priority = tbSound.Priority;
+            playSoundParams.Loop = tbSound.Loop;
+            playSoundParams.VolumeInSoundGroup = tbSound.Volume;
+            playSoundParams.SpatialBlend = tbSound.SpatialBlend;
+            return soundComponent.PlaySound(AssetUtility.GetSoundAsset(tbSound.AssetName), "Sound", Constant.AssetPriority.SoundAsset, playSoundParams, bindingEntity != null ? bindingEntity.Entity : null, userData);
         }
 
         public static int? PlayUISound(this SoundComponent soundComponent, int uiSoundId, object userData = null)
         {
-            IDataTable<DRUISound> dtUISound = GameEntry.DataTable.GetDataTable<DRUISound>();
-            DRUISound drUISound = dtUISound.GetDataRow(uiSoundId);
-            if (drUISound == null)
+            if (!GameEntry.LubanTable.TryGetTables(out Cfg.Tables tables)) return null;
+            var tbUISound = tables.TbUISound.Get(uiSoundId);
+            if (tbUISound == null)
             {
                 Log.Warning("Can not load UI sound '{0}' from data table.", uiSoundId.ToString());
                 return null;
             }
 
             PlaySoundParams playSoundParams = PlaySoundParams.Create();
-            playSoundParams.Priority = drUISound.Priority;
+            playSoundParams.Priority = tbUISound.Priority;
             playSoundParams.Loop = false;
-            playSoundParams.VolumeInSoundGroup = drUISound.Volume;
+            playSoundParams.VolumeInSoundGroup = tbUISound.Volume;
             playSoundParams.SpatialBlend = 0f;
-            return soundComponent.PlaySound(AssetUtility.GetUISoundAsset(drUISound.AssetName), "UISound", Constant.AssetPriority.UISoundAsset, playSoundParams, userData);
+            return soundComponent.PlaySound(AssetUtility.GetUISoundAsset(tbUISound.AssetName), "UISound", Constant.AssetPriority.UISoundAsset, playSoundParams, userData);
         }
 
         public static bool IsMuted(this SoundComponent soundComponent, string soundGroupName)

@@ -48,18 +48,18 @@ namespace Game.Hotfix
 
             Name = Utility.Text.Format("Aircraft ({0})", Id.ToString());
 
-            Main.GameEntry.Entity.ShowThruster(m_AircraftData.GetThrusterData());
+            GameEntry.Entity.ShowThruster(m_AircraftData.GetThrusterData());
 
             List<WeaponData> weaponDatas = m_AircraftData.GetAllWeaponDatas();
             for (int i = 0; i < weaponDatas.Count; i++)
             {
-                Main.GameEntry.Entity.ShowWeapon(weaponDatas[i]);
+                GameEntry.Entity.ShowWeapon(weaponDatas[i]);
             }
 
             List<ArmorData> armorDatas = m_AircraftData.GetAllArmorDatas();
             for (int i = 0; i < armorDatas.Count; i++)
             {
-                Main.GameEntry.Entity.ShowArmor(armorDatas[i]);
+                GameEntry.Entity.ShowArmor(armorDatas[i]);
             }
         }
 
@@ -130,11 +130,11 @@ namespace Game.Hotfix
         {
             base.OnDead(attacker);
 
-            Main.GameEntry.Entity.ShowEffect(new EffectData(Main.GameEntry.Entity.GenerateSerialId(), m_AircraftData.DeadEffectId)
+            GameEntry.Entity.ShowEffect(new EffectData(GameEntry.Entity.GenerateSerialId(), m_AircraftData.DeadEffectId)
             {
                 Position = CachedTransform.localPosition,
             });
-            Main.GameEntry.Sound.PlaySound(m_AircraftData.DeadSoundId);
+            GameEntry.Sound.PlaySound(m_AircraftData.DeadSoundId);
         }
 
         public override ImpactData GetImpactData()

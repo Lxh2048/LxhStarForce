@@ -90,15 +90,17 @@ namespace Game.Hotfix
                 return;
             }
 
-            IDataTable<DREntity> dtEntity = GameEntry.DataTable.GetDataTable<DREntity>();
-            DREntity drEntity = dtEntity.GetDataRow(data.TypeId);
-            if (drEntity == null)
+            if (GameEntry.LubanTable.TryGetTables(out Cfg.Tables tables))
             {
-                Log.Warning("Can not load entity id '{0}' from data table.", data.TypeId.ToString());
-                return;
-            }
+                var tbEntity = tables.TbEntity.Get((data.TypeId));
+                if (tbEntity == null)
+                {
+                    Log.Warning("Can not load entity id '{0}' from data table.", data.TypeId.ToString());
+                    return;
+                }
 
-            entityComponent.ShowEntity(data.Id, logicType, AssetUtility.GetEntityAsset(drEntity.AssetName), entityGroup, priority, data);
+                entityComponent.ShowEntity(data.Id, logicType, AssetUtility.GetEntityAsset(tbEntity.AssetName), entityGroup, priority, data);
+            }
         }
 
         public static int GenerateSerialId(this EntityComponent entityComponent)

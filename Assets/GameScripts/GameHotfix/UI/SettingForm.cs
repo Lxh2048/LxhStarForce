@@ -53,35 +53,35 @@ namespace Game.Hotfix
 
         public void OnMusicMuteChanged(bool isOn)
         {
-            Main.GameEntry.Sound.Mute("Music", !isOn);
+            GameEntry.Sound.Mute("Music", !isOn);
             m_MusicVolumeSlider.gameObject.SetActive(isOn);
         }
 
         public void OnMusicVolumeChanged(float volume)
         {
-            Main.GameEntry.Sound.SetVolume("Music", volume);
+            GameEntry.Sound.SetVolume("Music", volume);
         }
 
         public void OnSoundMuteChanged(bool isOn)
         {
-            Main.GameEntry.Sound.Mute("Sound", !isOn);
+            GameEntry.Sound.Mute("Sound", !isOn);
             m_SoundVolumeSlider.gameObject.SetActive(isOn);
         }
 
         public void OnSoundVolumeChanged(float volume)
         {
-            Main.GameEntry.Sound.SetVolume("Sound", volume);
+            GameEntry.Sound.SetVolume("Sound", volume);
         }
 
         public void OnUISoundMuteChanged(bool isOn)
         {
-            Main.GameEntry.Sound.Mute("UISound", !isOn);
+            GameEntry.Sound.Mute("UISound", !isOn);
             m_UISoundVolumeSlider.gameObject.SetActive(isOn);
         }
 
         public void OnUISoundVolumeChanged(float volume)
         {
-            Main.GameEntry.Sound.SetVolume("UISound", volume);
+            GameEntry.Sound.SetVolume("UISound", volume);
         }
 
         public void OnEnglishSelected(bool isOn)
@@ -130,7 +130,7 @@ namespace Game.Hotfix
 
         public void OnSubmitButtonClick()
         {
-            if (m_SelectedLanguage == Main.GameEntry.Localization.Language)
+            if (m_SelectedLanguage == GameEntry.Localization.Language)
             {
                 Close();
                 return;

@@ -47,14 +47,14 @@ namespace Game.Hotfix
 
         public static bool HasUIForm(this UIComponent uiComponent, int uiFormId, string uiGroupName = null)
         {
-            IDataTable<DRUIForm> dtUIForm = Main.GameEntry.DataTable.GetDataTable<DRUIForm>();
-            DRUIForm drUIForm = dtUIForm.GetDataRow(uiFormId);
-            if (drUIForm == null)
+            if (!GameEntry.LubanTable.TryGetTables(out Cfg.Tables tables)) return false;
+            var tbUIForm = tables.TbUIForm.Get(uiFormId);
+            if (tbUIForm == null)
             {
                 return false;
             }
 
-            string assetName = AssetUtility.GetUIFormAsset(drUIForm.AssetName);
+            string assetName = AssetUtility.GetUIFormAsset(tbUIForm.AssetName);
             if (string.IsNullOrEmpty(uiGroupName))
             {
                 return uiComponent.HasUIForm(assetName);
@@ -76,14 +76,14 @@ namespace Game.Hotfix
 
         public static UGUIForm GetUIForm(this UIComponent uiComponent, int uiFormId, string uiGroupName = null)
         {
-            IDataTable<DRUIForm> dtUIForm = GameEntry.DataTable.GetDataTable<DRUIForm>();
-            DRUIForm drUIForm = dtUIForm.GetDataRow(uiFormId);
-            if (drUIForm == null)
+            if (!GameEntry.LubanTable.TryGetTables(out Cfg.Tables tables)) return null;
+            var tbUIForm = tables.TbUIForm.Get(uiFormId);
+            if (tbUIForm == null)
             {
                 return null;
             }
 
-            string assetName = AssetUtility.GetUIFormAsset(drUIForm.AssetName);
+            string assetName = AssetUtility.GetUIFormAsset(tbUIForm.AssetName);
             UIForm uiForm = null;
             if (string.IsNullOrEmpty(uiGroupName))
             {
@@ -123,16 +123,16 @@ namespace Game.Hotfix
 
         public static int? OpenUIForm(this UIComponent uiComponent, int uiFormId, object userData = null)
         {
-            IDataTable<DRUIForm> dtUIForm = GameEntry.DataTable.GetDataTable<DRUIForm>();
-            DRUIForm drUIForm = dtUIForm.GetDataRow(uiFormId);
-            if (drUIForm == null)
+            if (!GameEntry.LubanTable.TryGetTables(out Cfg.Tables tables)) return null;
+            var tbUIForm = tables.TbUIForm.Get(uiFormId);
+            if (tbUIForm == null)
             {
                 Log.Warning("Can not load UI form '{0}' from data table.", uiFormId.ToString());
                 return null;
             }
 
-            string assetName = AssetUtility.GetUIFormAsset(drUIForm.AssetName);
-            if (!drUIForm.AllowMultiInstance)
+            string assetName = AssetUtility.GetUIFormAsset(tbUIForm.AssetName);
+            if (!tbUIForm.AllowMultiInstance)
             {
                 if (uiComponent.IsLoadingUIForm(assetName))
                 {
@@ -145,7 +145,7 @@ namespace Game.Hotfix
                 }
             }
 
-            return uiComponent.OpenUIForm(assetName, drUIForm.UIGroupName, Constant.AssetPriority.UIFormAsset, drUIForm.PauseCoveredUIForm, userData);
+            return uiComponent.OpenUIForm(assetName, tbUIForm.UIGroupName, Constant.AssetPriority.UIFormAsset, tbUIForm.PauseCoveredUIForm, userData);
         }
 
         public static void OpenDialog(this UIComponent uiComponent, DialogParams dialogParams)

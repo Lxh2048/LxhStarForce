@@ -41,27 +41,27 @@ namespace Game.Hotfix
         public AircraftData(int entityId, int typeId, CampType camp)
             : base(entityId, typeId, camp)
         {
-            IDataTable<DRAircraft> dtAircraft = GameEntry.DataTable.GetDataTable<DRAircraft>();
-            DRAircraft drAircraft = dtAircraft.GetDataRow(TypeId);
-            if (drAircraft == null)
+            if (!GameEntry.LubanTable.TryGetTables(out Cfg.Tables tables)) return;
+            var tbAircraft = tables.TbAircraft.Get(TypeId);
+            if (tbAircraft == null)
             {
                 return;
             }
 
-            m_ThrusterData = new ThrusterData(GameEntry.Entity.GenerateSerialId(), drAircraft.ThrusterId, Id, Camp);
+            m_ThrusterData = new ThrusterData(GameEntry.Entity.GenerateSerialId(), tbAircraft.ThrusterId, Id, Camp);
 
-            for (int index = 0, weaponId = 0; (weaponId = drAircraft.GetWeaponIdAt(index)) > 0; index++)
+            for (int index = 0, weaponId = 0; (weaponId = tbAircraft.WeaponId[index]) > 0; index++)
             {
                 AttachWeaponData(new WeaponData(GameEntry.Entity.GenerateSerialId(), weaponId, Id, Camp));
             }
 
-            for (int index = 0, armorId = 0; (armorId = drAircraft.GetArmorIdAt(index)) > 0; index++)
+            for (int index = 0, armorId = 0; (armorId = tbAircraft.ArmorId[index]) > 0; index++)
             {
                 AttachArmorData(new ArmorData(GameEntry.Entity.GenerateSerialId(), armorId, Id, Camp));
             }
 
-            m_DeadEffectId = drAircraft.DeadEffectId;
-            m_DeadSoundId = drAircraft.DeadSoundId;
+            m_DeadEffectId = tbAircraft.DeadEffectId;
+            m_DeadSoundId = tbAircraft.DeadSoundId;
 
             HP = m_MaxHP;
         }

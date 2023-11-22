@@ -22,14 +22,14 @@ namespace Game.Hotfix
         public ThrusterData(int entityId, int typeId, int ownerId, CampType ownerCamp)
             : base(entityId, typeId, ownerId, ownerCamp)
         {
-            IDataTable<DRThruster> dtThruster = GameEntry.DataTable.GetDataTable<DRThruster>();
-            DRThruster drThruster = dtThruster.GetDataRow(TypeId);
-            if (drThruster == null)
+            if (!GameEntry.LubanTable.TryGetTables(out Cfg.Tables tables)) return;
+            var tbThruster = tables.TbThruster.Get(TypeId);
+            if (tbThruster == null)
             {
                 return;
             }
 
-            m_Speed = drThruster.Speed;
+            m_Speed = tbThruster.Speed;
         }
 
         /// <summary>

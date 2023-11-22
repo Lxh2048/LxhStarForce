@@ -50,7 +50,7 @@ namespace Game.Hotfix
 
             if (ignoreFade)
             {
-                Main.GameEntry.UI.CloseUIForm(this);
+                GameEntry.UI.CloseUIForm(this);
             }
             else
             {
@@ -60,7 +60,7 @@ namespace Game.Hotfix
 
         public void PlayUISound(int uiSoundId)
         {
-            Main.GameEntry.Sound.PlayUISound(uiSoundId);
+            GameEntry.Sound.PlayUISound(uiSoundId);
         }
 
         public static void SetMainFont(Font mainFont)
@@ -102,7 +102,7 @@ namespace Game.Hotfix
                 texts[i].font = s_MainFont;
                 if (!string.IsNullOrEmpty(texts[i].text))
                 {
-                    texts[i].text = Main.GameEntry.Localization.GetString(texts[i].text);
+                    texts[i].text = GameEntry.Localization.GetString(texts[i].text);
                 }
             }
         }

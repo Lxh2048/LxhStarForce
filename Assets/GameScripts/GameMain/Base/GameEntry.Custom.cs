@@ -20,9 +20,16 @@ namespace Game.Main
             private set;
         }
 
+        public static LubanTableComponent LubanTable
+        {
+            get; 
+            private set;
+        }
+
         private static void InitCustomComponents()
         {
             BuiltinData = UnityGameFramework.Runtime.GameEntry.GetComponent<BuiltinDataComponent>();
+            LubanTable = UnityGameFramework.Runtime.GameEntry.GetComponent<LubanTableComponent>();
         }
     }
 }

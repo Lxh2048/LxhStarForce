@@ -13,6 +13,8 @@ using Game.Main;
 using GameFramework.Resource;
 using GameFramework.Event;
 using GameFramework;
+using Luban;
+using SimpleJSON;
 using UnityEngine;
 
 namespace Game.Hotfix
@@ -24,6 +26,7 @@ namespace Game.Hotfix
     public class ProcedurePreload : ProcedureBase
     {
         private Dictionary<string, bool> m_LoadedFlag = new Dictionary<string, bool>();
+        private Dictionary<string, TextAsset> m_LubanTextAssets = new Dictionary<string, TextAsset>();
 
         public override bool UseNativeDialog
         {
@@ -72,6 +75,18 @@ namespace Game.Hotfix
                     return;
                 }
             }
+            
+            // 注入luban
+            var table = new Cfg.Tables((file) =>
+            {
+#if UNITY_EDITOR
+                return JSON.Parse(m_LubanTextAssets[file].text);
+#else
+                return new ByteBuf(m_LubanTextAssets[file].bytes);
+#endif
+            });
+            GameEntry.LubanTable.SetTables(table);
+            m_LubanTextAssets.Clear();
 
             ChangeState<ProcedureHybridCLRLaunch>(procedureOwner);
         }
@@ -82,9 +97,15 @@ namespace Game.Hotfix
             LoadConfig("DefaultConfig");
 
             // Preload data tables
-            foreach (string dataTableName in DataTable.DataTableNames)
+            // foreach (string dataTableName in DataTable.DataTableNames)
+            // {
+            //     LoadDataTable(dataTableName);
+            // }
+            
+            // Preload luban tables
+            foreach (string lubanTableName in DataTable.LubanTableNames)
             {
-                LoadDataTable(dataTableName);
+                LoadLubanTable(lubanTableName);
             }
 
             // Preload dictionaries
@@ -108,6 +129,29 @@ namespace Game.Hotfix
             string dataTableAssetName = AssetUtility.GetDataTableAsset(dataTableName, false);
             m_LoadedFlag.Add(dataTableAssetName, false);
             GameEntry.DataTable.LoadDataTable(dataTableName, dataTableAssetName, this);
+        }
+        
+        private void LoadLubanTable(string lubanTableName)
+        {
+            string lubanTableAssetName;
+            if (GameEntry.Base.EditorResourceMode)
+            {
+                // 编辑器模式
+                lubanTableAssetName = AssetUtility.GetLubanTableAsset(lubanTableName, false);
+            }
+            else
+            {
+                lubanTableAssetName = AssetUtility.GetLubanTableAsset(lubanTableName, true);
+            }
+            m_LoadedFlag.Add(lubanTableAssetName, false);
+            GameEntry.Resource.LoadAsset(lubanTableAssetName,new LoadAssetCallbacks((string assetName, object asset, float duration, object userData) =>
+            {
+                    m_LoadedFlag[assetName] = true;
+                    m_LubanTextAssets.Add(lubanTableName, (TextAsset)asset);
+            }, (string assetName, LoadResourceStatus status, string errorMessage, object userData) =>
+            {
+                Log.Error("Can not load luban table from '{0}' with error message '{1}'.", assetName, errorMessage);
+            }));
         }
 
         private void LoadDictionary(string dictionaryName)

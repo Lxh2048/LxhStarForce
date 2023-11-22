@@ -36,19 +36,19 @@ namespace Game.Hotfix
 
         public AsteroidData(int entityId, int typeId) : base(entityId, typeId, CampType.Neutral)
         {
-            IDataTable<DRAsteroid> dtAsteroid = GameEntry.DataTable.GetDataTable<DRAsteroid>();
-            DRAsteroid drAsteroid = dtAsteroid.GetDataRow(TypeId);
-            if (drAsteroid == null)
+            if (!GameEntry.LubanTable.TryGetTables(out Cfg.Tables tables)) return;
+            var tbAsteroid = tables.TbAsteroid.Get(TypeId);
+            if (tbAsteroid == null)
             {
                 return;
             }
 
-            HP = m_MaxHP = drAsteroid.MaxHP;
-            m_Attack = drAsteroid.Attack;
-            m_Speed = drAsteroid.Speed;
-            m_AngularSpeed = drAsteroid.AngularSpeed;
-            m_DeadEffectId = drAsteroid.DeadEffectId;
-            m_DeadSoundId = drAsteroid.DeadSoundId;
+            HP = m_MaxHP = tbAsteroid.MaxHP;
+            m_Attack = tbAsteroid.Attack;
+            m_Speed = tbAsteroid.Speed;
+            m_AngularSpeed = tbAsteroid.AngularSpeed;
+            m_DeadEffectId = tbAsteroid.DeadEffectId;
+            m_DeadSoundId = tbAsteroid.DeadSoundId;
         }
 
         public override int MaxHP

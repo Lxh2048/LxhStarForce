@@ -10,13 +10,13 @@ namespace Game.Editor
     public sealed class ToolsMenu
     {
         //生成数据表
-        [MenuItem("Tools/DataTables/Generate DataTables")]
+        // [MenuItem("Tools/DataTables/Generate DataTables")]
         private static void GenerateDataTables()
         {
             DataTableCodeBinary.GenerateDataTables();
         }
         //配置Configs转Bytes
-        [MenuItem("Tools/DataTables/ConfigsToBinary")]
+        // [MenuItem("Tools/DataTables/ConfigsToBinary")]
         private static void SelectionConfigTextToBinary()
         {
             DataTableCodeBinary.ConfigTextToBinary();
