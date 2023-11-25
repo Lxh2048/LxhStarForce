@@ -81,7 +81,7 @@ namespace Game.Main
 
             Log.Info("<color=green> ProcedureToHuaTuo Load Native/GameHotfixEntry.Perfab </color>");
 
-            string assetName = AssetUtility.GetModulePrefabsAsset("Native/GameHotfixEntry");
+            string assetName = MainAssetUtility.GetModulePrefabsAsset("Native/GameHotfixEntry");
             GameEntry.Resource.LoadAsset(assetName, new LoadAssetCallbacks((assetName, asset, duration, userData) =>
             {//加载成功
                 var GameHotfixEntry = GameObject.Instantiate((asset as GameObject), GameEntry.BuiltinData.transform.parent);
@@ -141,7 +141,7 @@ namespace Game.Main
         {
             m_LoadedFlag.Add(aotName, false);
             PrefabData prefabData = new PrefabData() { prefabName = aotName };
-            string assetName = AssetUtility.GetAOTDllAsset(aotName);
+            string assetName = MainAssetUtility.GetAOTDllAsset(aotName);
             GameEntry.Resource.LoadAsset(assetName, new LoadAssetCallbacks(OnLoadAOTDllSuccess, OnLoadAOTFailured), prefabData);
         }
 
@@ -149,7 +149,7 @@ namespace Game.Main
         {
             m_LoadedFlag.Add(aotName, false);
             PrefabData prefabData = new PrefabData() { prefabName = aotName };
-            string assetName = AssetUtility.GetHotDllAsset(aotName);
+            string assetName = MainAssetUtility.GetHotDllAsset(aotName);
             GameEntry.Resource.LoadAsset(assetName, new LoadAssetCallbacks(OnLoadAOTDllSuccess, OnLoadAOTFailured), prefabData);
         }
 

@@ -78,7 +78,7 @@ namespace Game.Main
 
         private void SaveLanguage()
         {
-            GameEntry.Setting.SetString(Constant.Setting.Language, GameEntry.Localization.Language.ToString());
+            GameEntry.Setting.SetString(MainConstant.Setting.Language, GameEntry.Localization.Language.ToString());
             GameEntry.Setting.Save();
             m_NeedRestart = true;
         }

@@ -98,11 +98,11 @@ namespace Game.Main
             }
 
             Language language = GameEntry.Localization.Language;
-            if (GameEntry.Setting.HasSetting(Constant.Setting.Language))
+            if (GameEntry.Setting.HasSetting(MainConstant.Setting.Language))
             {
                 try
                 {
-                    string languageString = GameEntry.Setting.GetString(Constant.Setting.Language);
+                    string languageString = GameEntry.Setting.GetString(MainConstant.Setting.Language);
                     language = (Language)Enum.Parse(typeof(Language), languageString);
                 }
                 catch
@@ -118,7 +118,7 @@ namespace Game.Main
                 // 若是暂不支持的语言，则使用英语
                 language = Language.English;
 
-                GameEntry.Setting.SetString(Constant.Setting.Language, language.ToString());
+                GameEntry.Setting.SetString(MainConstant.Setting.Language, language.ToString());
                 GameEntry.Setting.Save();
             }
 
@@ -128,12 +128,12 @@ namespace Game.Main
 
         private void InitSoundSettings()
         {
-            GameEntry.Sound.Mute("Music", GameEntry.Setting.GetBool(Constant.Setting.MusicMuted, false));
-            GameEntry.Sound.SetVolume("Music", GameEntry.Setting.GetFloat(Constant.Setting.MusicVolume, 0.3f));
-            GameEntry.Sound.Mute("Sound", GameEntry.Setting.GetBool(Constant.Setting.SoundMuted, false));
-            GameEntry.Sound.SetVolume("Sound", GameEntry.Setting.GetFloat(Constant.Setting.SoundVolume, 1f));
-            GameEntry.Sound.Mute("UISound", GameEntry.Setting.GetBool(Constant.Setting.UISoundMuted, false));
-            GameEntry.Sound.SetVolume("UISound", GameEntry.Setting.GetFloat(Constant.Setting.UISoundVolume, 1f));
+            GameEntry.Sound.Mute("Music", GameEntry.Setting.GetBool(MainConstant.Setting.MusicMuted, false));
+            GameEntry.Sound.SetVolume("Music", GameEntry.Setting.GetFloat(MainConstant.Setting.MusicVolume, 0.3f));
+            GameEntry.Sound.Mute("Sound", GameEntry.Setting.GetBool(MainConstant.Setting.SoundMuted, false));
+            GameEntry.Sound.SetVolume("Sound", GameEntry.Setting.GetFloat(MainConstant.Setting.SoundVolume, 1f));
+            GameEntry.Sound.Mute("UISound", GameEntry.Setting.GetBool(MainConstant.Setting.UISoundMuted, false));
+            GameEntry.Sound.SetVolume("UISound", GameEntry.Setting.GetFloat(MainConstant.Setting.UISoundVolume, 1f));
             Log.Info("Init sound settings complete.");
         }
     }
@@ -156,7 +156,7 @@ namespace Game.Main
 
             soundGroup.Mute = mute;
 
-            GameEntry.Setting.SetBool(Utility.Text.Format(Constant.Setting.SoundGroupMuted, soundGroupName), mute);
+            GameEntry.Setting.SetBool(Utility.Text.Format(MainConstant.Setting.SoundGroupMuted, soundGroupName), mute);
             GameEntry.Setting.Save();
         }
 
@@ -177,7 +177,7 @@ namespace Game.Main
 
             soundGroup.Volume = volume;
 
-            GameEntry.Setting.SetFloat(Utility.Text.Format(Constant.Setting.SoundGroupVolume, soundGroupName), volume);
+            GameEntry.Setting.SetFloat(Utility.Text.Format(MainConstant.Setting.SoundGroupVolume, soundGroupName), volume);
             GameEntry.Setting.Save();
         }
     }

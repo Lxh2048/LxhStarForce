@@ -17,19 +17,19 @@ namespace Game.Editor
     {
         public static void GenerateDataTables()
         {
-            foreach (string dataTableName in DataTable.DataTableNames)
-            {
-                Debug.Log(dataTableName);
-                DataTableProcessor dataTableProcessor = DataTableGenerator.CreateDataTableProcessor(dataTableName);
-                if (!DataTableGenerator.CheckRawData(dataTableProcessor, dataTableName))
-                {
-                    UnityEngine.Debug.LogError(Utility.Text.Format("Check raw data failure. DataTableName='{0}'", dataTableName));
-                    break;
-                }
-
-                DataTableGenerator.GenerateDataFile(dataTableProcessor, dataTableName);
-                DataTableGenerator.GenerateCodeFile(dataTableProcessor, dataTableName);
-            }
+            // foreach (string dataTableName in DataTable.DataTableNames)
+            // {
+            //     Debug.Log(dataTableName);
+            //     DataTableProcessor dataTableProcessor = DataTableGenerator.CreateDataTableProcessor(dataTableName);
+            //     if (!DataTableGenerator.CheckRawData(dataTableProcessor, dataTableName))
+            //     {
+            //         UnityEngine.Debug.LogError(Utility.Text.Format("Check raw data failure. DataTableName='{0}'", dataTableName));
+            //         break;
+            //     }
+            //
+            //     DataTableGenerator.GenerateDataFile(dataTableProcessor, dataTableName);
+            //     DataTableGenerator.GenerateCodeFile(dataTableProcessor, dataTableName);
+            // }
 
             AssetDatabase.Refresh();
         }
@@ -39,8 +39,8 @@ namespace Game.Editor
             char[] DataSplitSeparators = new char[] { '\t' };
             char[] DataTrimSeparators = new char[] { '\"' };
             char[] DataLineSeparators = new char[] { '\r', '\n' };
-            string configTextPath = AssetUtility.GetConfigAsset("DefaultConfig", false);
-            string configBinaryPath = AssetUtility.GetConfigAsset("DefaultConfig", true);
+            string configTextPath = MainAssetUtility.GetConfigAsset("DefaultConfig", false);
+            string configBinaryPath = MainAssetUtility.GetConfigAsset("DefaultConfig", true);
 
             TextAsset textAsset = AssetDatabase.LoadAssetAtPath<TextAsset>(configTextPath);
             string[] texts = textAsset.text.Split(DataLineSeparators);

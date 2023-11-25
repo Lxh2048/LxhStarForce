@@ -19,9 +19,9 @@ namespace Game.Main
 	            Log.Warning("Dictionary name is invalid.");
 	            return;
 	        }
-			string fullname = AssetUtility.GetDictionaryAsset(dictionaryName, fromBytes);
+			string fullname = MainAssetUtility.GetDictionaryAsset(dictionaryName, fromBytes);
 
-			localizationComponent.ReadData(fullname, Constant.AssetPriority.DictionaryAsset, userData);
+			localizationComponent.ReadData(fullname, MainConstant.AssetPriority.DictionaryAsset, userData);
 	    }
 	}
 }
