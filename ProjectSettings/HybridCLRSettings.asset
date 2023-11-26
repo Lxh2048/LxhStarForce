@@ -21,10 +21,11 @@ MonoBehaviour:
   hotUpdateAssemblies:
   - Assembly-CSharp
   preserveHotUpdateAssemblies: []
-  hotUpdateDllCompileOutputRootDir: LxhHybridCLRData/HotUpdateDlls
+  hotUpdateDllCompileOutputRootDir: HybridCLRData/HotUpdateDlls
   externalHotUpdateAssembliyDirs: []
-  strippedAOTDllOutputRootDir: LxhHybridCLRData/AssembliesPostIl2CppStrip
-  patchAOTAssemblies: []
+  strippedAOTDllOutputRootDir: HybridCLRData/AssembliesPostIl2CppStrip
+  patchAOTAssemblies:
+  - mscorlib.dll
   outputLinkFile: GameScripts/HybridCLRGenerate/link.xml
   outputAOTGenericReferenceFile: GameScripts/HybridCLRGenerate/AOTGenericReferences.cs
   maxGenericReferenceIteration: 10

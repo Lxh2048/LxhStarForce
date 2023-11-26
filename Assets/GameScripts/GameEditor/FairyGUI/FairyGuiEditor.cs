@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using FairyGUI;
-using Game.Hotfix;
+using Game.Main;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -10,8 +10,8 @@ namespace Game.Editor
 {
     public class FairyGuiEditor : AssetPostprocessor
     {
-        public const string FairyGuiAssetsPath = "Assets/Game/UI/FairyGuis/";
-        public const string FairyGuiPackagesPath = "Assets/Game/UI/FairyGuiPackages/";
+        public const string FairyGuiAssetsPath = "Assets/GameRes/UI/FairyGuis/";
+        public const string FairyGuiPackagesPath = "Assets/GameRes/UI/FairyGuiPackages/";
 
         private static Dictionary<string, TextAsset> m_FuiDescAssetDict = new Dictionary<string, TextAsset>();
         private static Dictionary<string, List<Object>> m_FuiAssetsDict = new Dictionary<string, List<Object>>();

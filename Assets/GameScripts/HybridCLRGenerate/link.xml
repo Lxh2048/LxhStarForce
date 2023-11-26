@@ -1,26 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <linker>
-  <assembly fullname="GameFrame.Main">
-    <type fullname="GameFrame.Main.AssetUtility" preserve="all" />
-    <type fullname="GameFrame.Main.CSPacketBase" preserve="all" />
-    <type fullname="GameFrame.Main.Constant" preserve="all" />
-    <type fullname="GameFrame.Main.Constant/Layer" preserve="all" />
-    <type fullname="GameFrame.Main.DataTable" preserve="all" />
-    <type fullname="GameFrame.Main.DialogParams" preserve="all" />
-    <type fullname="GameFrame.Main.GameEntry" preserve="all" />
-    <type fullname="GameFrame.Main.MessagePacketConverter" preserve="all" />
-    <type fullname="GameFrame.Main.PacketBase" preserve="all" />
-    <type fullname="GameFrame.Main.PacketHandlerBase" preserve="all" />
-    <type fullname="GameFrame.Main.PacketHeaderBase" preserve="all" />
-    <type fullname="GameFrame.Main.PacketType" preserve="all" />
-    <type fullname="GameFrame.Main.ProcedureBase" preserve="all" />
-    <type fullname="GameFrame.Main.SCPacketBase" preserve="all" />
-    <type fullname="GameFrame.Main.SCPacketHeader" preserve="all" />
+  <assembly fullname="Game.Main">
+    <type fullname="Game.Main.CSPacketBase" preserve="all" />
+    <type fullname="Game.Main.DialogParams" preserve="all" />
+    <type fullname="Game.Main.FairyGuiFormBase" preserve="all" />
+    <type fullname="Game.Main.FairyGuiPackageAsset" preserve="all" />
+    <type fullname="Game.Main.GameEntry" preserve="all" />
+    <type fullname="Game.Main.LubanTableComponent" preserve="all" />
+    <type fullname="Game.Main.MessagePacketConverter" preserve="all" />
+    <type fullname="Game.Main.PacketBase" preserve="all" />
+    <type fullname="Game.Main.PacketHandlerBase" preserve="all" />
+    <type fullname="Game.Main.PacketHeaderBase" preserve="all" />
+    <type fullname="Game.Main.PacketType" preserve="all" />
+    <type fullname="Game.Main.ProcedureBase" preserve="all" />
+    <type fullname="Game.Main.SCPacketBase" preserve="all" />
+    <type fullname="Game.Main.SCPacketHeader" preserve="all" />
+    <type fullname="Luban.BeanBase" preserve="all" />
+    <type fullname="Luban.SerializationException" preserve="all" />
+    <type fullname="Luban.StringUtil" preserve="all" />
+    <type fullname="SimpleJSON.JSON" preserve="all" />
+    <type fullname="SimpleJSON.JSONNode" preserve="all" />
   </assembly>
   <assembly fullname="GameFramework">
     <type fullname="GameFramework.BaseEventArgs" preserve="all" />
     <type fullname="GameFramework.DataTable.DataTableBase" preserve="all" />
-    <type fullname="GameFramework.DataTable.IDataTable`1" preserve="all" />
     <type fullname="GameFramework.Event.GameEventArgs" preserve="all" />
     <type fullname="GameFramework.Fsm.FsmState`1" preserve="all" />
     <type fullname="GameFramework.Fsm.IFsmManager" preserve="all" />
@@ -55,6 +58,11 @@
     <type fullname="GameFramework.Utility/Text" preserve="all" />
     <type fullname="GameFramework.Variable`1" preserve="all" />
   </assembly>
+  <assembly fullname="HybridCLR.Runtime">
+    <type fullname="HybridCLR.HomologousImageMode" preserve="all" />
+    <type fullname="HybridCLR.LoadImageErrorCode" preserve="all" />
+    <type fullname="HybridCLR.RuntimeApi" preserve="all" />
+  </assembly>
   <assembly fullname="System">
     <type fullname="System.Net.EndPoint" preserve="all" />
     <type fullname="System.Net.IPAddress" preserve="all" />
@@ -75,6 +83,7 @@
     <type fullname="UnityEngine.Events.UnityEvent" preserve="all" />
     <type fullname="UnityEngine.GameObject" preserve="all" />
     <type fullname="UnityEngine.KeyCode" preserve="all" />
+    <type fullname="UnityEngine.LayerMask" preserve="all" />
     <type fullname="UnityEngine.Mathf" preserve="all" />
     <type fullname="UnityEngine.MonoBehaviour" preserve="all" />
     <type fullname="UnityEngine.Object" preserve="all" />
@@ -86,6 +95,7 @@
     <type fullname="UnityEngine.Screen" preserve="all" />
     <type fullname="UnityEngine.SerializeField" preserve="all" />
     <type fullname="UnityEngine.Space" preserve="all" />
+    <type fullname="UnityEngine.TextAsset" preserve="all" />
     <type fullname="UnityEngine.Time" preserve="all" />
     <type fullname="UnityEngine.Transform" preserve="all" />
     <type fullname="UnityEngine.Vector2" preserve="all" />
@@ -139,8 +149,6 @@
     <type fullname="UnityGameFramework.Runtime.GameFrameworkComponent" preserve="all" />
     <type fullname="UnityGameFramework.Runtime.LoadConfigFailureEventArgs" preserve="all" />
     <type fullname="UnityGameFramework.Runtime.LoadConfigSuccessEventArgs" preserve="all" />
-    <type fullname="UnityGameFramework.Runtime.LoadDataTableFailureEventArgs" preserve="all" />
-    <type fullname="UnityGameFramework.Runtime.LoadDataTableSuccessEventArgs" preserve="all" />
     <type fullname="UnityGameFramework.Runtime.LoadDictionaryFailureEventArgs" preserve="all" />
     <type fullname="UnityGameFramework.Runtime.LoadDictionarySuccessEventArgs" preserve="all" />
     <type fullname="UnityGameFramework.Runtime.LoadSceneDependencyAssetEventArgs" preserve="all" />
@@ -184,6 +192,7 @@
     <type fullname="System.Collections.Generic.IEnumerator`1" preserve="all" />
     <type fullname="System.Collections.Generic.KeyValuePair`2" preserve="all" />
     <type fullname="System.Collections.Generic.List`1" preserve="all" />
+    <type fullname="System.Collections.Generic.List`1/Enumerator" preserve="all" />
     <type fullname="System.Collections.IEnumerator" preserve="all" />
     <type fullname="System.DateTime" preserve="all" />
     <type fullname="System.Diagnostics.DebuggableAttribute" preserve="all" />
@@ -191,6 +200,8 @@
     <type fullname="System.Diagnostics.DebuggerHiddenAttribute" preserve="all" />
     <type fullname="System.Enum" preserve="all" />
     <type fullname="System.EventHandler`1" preserve="all" />
+    <type fullname="System.FlagsAttribute" preserve="all" />
+    <type fullname="System.Func`2" preserve="all" />
     <type fullname="System.IDisposable" preserve="all" />
     <type fullname="System.IO.BinaryReader" preserve="all" />
     <type fullname="System.IO.MemoryStream" preserve="all" />
@@ -199,8 +210,8 @@
     <type fullname="System.NotSupportedException" preserve="all" />
     <type fullname="System.Nullable`1" preserve="all" />
     <type fullname="System.Object" preserve="all" />
-    <type fullname="System.Predicate`1" preserve="all" />
     <type fullname="System.Reflection.Assembly" preserve="all" />
+    <type fullname="System.Reflection.DefaultMemberAttribute" preserve="all" />
     <type fullname="System.Reflection.MemberInfo" preserve="all" />
     <type fullname="System.Runtime.CompilerServices.CompilationRelaxationsAttribute" preserve="all" />
     <type fullname="System.Runtime.CompilerServices.CompilerGeneratedAttribute" preserve="all" />

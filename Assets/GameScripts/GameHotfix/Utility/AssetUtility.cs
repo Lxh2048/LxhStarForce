@@ -60,6 +60,11 @@ namespace Game.Hotfix
             return Utility.Text.Format("Assets/GameRes/Entities/{0}.prefab", assetName);
         }
 
+        public static string GetFairyGuiPackages(string assetName)
+        {
+            return Utility.Text.Format("Assets/GameRes/UI/FairyGuiPackages/{0}.asset", assetName);
+        }
+
         public static string GetUIFormAsset(string assetName)
         {
             return Utility.Text.Format("Assets/GameRes/UI/UIForms/{0}.prefab", assetName);

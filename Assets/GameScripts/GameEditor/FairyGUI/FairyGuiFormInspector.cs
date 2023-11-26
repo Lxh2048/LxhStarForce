@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
-using Game.Hotfix;
+using Game.Main;
 using UnityEditor;
 using UnityGameFramework.Editor;
 
 namespace Game.Editor
 {
-    [CustomEditor(typeof(FairyGuiForm), true)]
+    [CustomEditor(typeof(FairyGuiFormBase), true)]
     public class FairyGuiFormInspector : GameFrameworkInspector
     {
         private SerializedProperty m_FairyGuiPackageAssetSerializedProperty;

@@ -2,17 +2,17 @@
 <UnityGameFramework>
   <ResourceBuilder>
     <Settings>
-      <InternalResourceVersion>0</InternalResourceVersion>
+      <InternalResourceVersion>7</InternalResourceVersion>
       <Platforms>1</Platforms>
       <AssetBundleCompression>1</AssetBundleCompression>
       <CompressionHelperTypeName>UnityGameFramework.Runtime.DefaultCompressionHelper</CompressionHelperTypeName>
       <AdditionalCompressionSelected>False</AdditionalCompressionSelected>
       <ForceRebuildAssetBundleSelected>False</ForceRebuildAssetBundleSelected>
-      <BuildEventHandlerTypeName>GameFrame.Editor.GameBuildEventHandler</BuildEventHandlerTypeName>
+      <BuildEventHandlerTypeName>Game.Editor.GameBuildEventHandler</BuildEventHandlerTypeName>
       <OutputDirectory>C:/D/UnityWorkSpace/LxhStarForce/LxhOutPut/AB</OutputDirectory>
-      <OutputPackageSelected>False</OutputPackageSelected>
+      <OutputPackageSelected>True</OutputPackageSelected>
       <OutputFullSelected>True</OutputFullSelected>
-      <OutputPackedSelected>False</OutputPackedSelected>
+      <OutputPackedSelected>True</OutputPackedSelected>
     </Settings>
   </ResourceBuilder>
 </UnityGameFramework>

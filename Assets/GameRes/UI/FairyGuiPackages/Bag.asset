@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 321b0292892b74d4289ce0962a7ee417, type: 3}
+  m_Name: Bag
+  m_EditorClassIdentifier: 
+  m_PackageName: Bag
+  m_ComponentNames:
+  - BagWin
+  - Main
+  m_DescAsset: {fileID: 4900000, guid: 16527eda11fcd424aa3da89349d51ee7, type: 3}
+  m_AssetObjects:
+  - {fileID: 2800000, guid: 21b9690e08019814b868c4484c7d5cb3, type: 3}

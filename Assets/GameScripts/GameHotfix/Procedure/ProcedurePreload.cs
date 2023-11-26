@@ -13,6 +13,7 @@ using Game.Main;
 using GameFramework.Resource;
 using GameFramework.Event;
 using GameFramework;
+using HybridCLR;
 using Luban;
 using SimpleJSON;
 using UnityEngine;
@@ -26,7 +27,9 @@ namespace Game.Hotfix
     public class ProcedurePreload : ProcedureBase
     {
         private Dictionary<string, bool> m_LoadedFlag = new Dictionary<string, bool>();
+        
         private Dictionary<string, TextAsset> m_LubanTextAssets = new Dictionary<string, TextAsset>();
+        private Dictionary<string, byte[]> m_loadedHotifx = new Dictionary<string, byte[]>();
 
         public override bool UseNativeDialog
         {
@@ -42,8 +45,6 @@ namespace Game.Hotfix
 
             GameEntry.Event.Subscribe(LoadConfigSuccessEventArgs.EventId, OnLoadConfigSuccess);
             GameEntry.Event.Subscribe(LoadConfigFailureEventArgs.EventId, OnLoadConfigFailure);
-            GameEntry.Event.Subscribe(LoadDataTableSuccessEventArgs.EventId, OnLoadDataTableSuccess);
-            GameEntry.Event.Subscribe(LoadDataTableFailureEventArgs.EventId, OnLoadDataTableFailure);
             GameEntry.Event.Subscribe(LoadDictionarySuccessEventArgs.EventId, OnLoadDictionarySuccess);
             GameEntry.Event.Subscribe(LoadDictionaryFailureEventArgs.EventId, OnLoadDictionaryFailure);
 
@@ -56,8 +57,6 @@ namespace Game.Hotfix
         {
             GameEntry.Event.Unsubscribe(LoadConfigSuccessEventArgs.EventId, OnLoadConfigSuccess);
             GameEntry.Event.Unsubscribe(LoadConfigFailureEventArgs.EventId, OnLoadConfigFailure);
-            GameEntry.Event.Unsubscribe(LoadDataTableSuccessEventArgs.EventId, OnLoadDataTableSuccess);
-            GameEntry.Event.Unsubscribe(LoadDataTableFailureEventArgs.EventId, OnLoadDataTableFailure);
             GameEntry.Event.Unsubscribe(LoadDictionarySuccessEventArgs.EventId, OnLoadDictionarySuccess);
             GameEntry.Event.Unsubscribe(LoadDictionaryFailureEventArgs.EventId, OnLoadDictionaryFailure);
 
@@ -77,35 +76,52 @@ namespace Game.Hotfix
             }
             
             // 注入luban
-            var table = new Cfg.Tables((file) =>
-            {
-#if UNITY_EDITOR
-                return JSON.Parse(m_LubanTextAssets[file].text);
-#else
-                return new ByteBuf(m_LubanTextAssets[file].bytes);
-#endif
-            });
+            // var table = new Cfg.Tables((file) => new ByteBuf(m_LubanTextAssets[file].bytes));
+            var table = new Cfg.Tables((file) => JSON.Parse(m_LubanTextAssets[file].text));
             GameEntry.LubanTable.SetTables(table);
             m_LubanTextAssets.Clear();
 
+            // aot元数据
+            // if (!GameEntry.Base.EditorResourceMode)
+            // {
+            //     LoadMetadataForAOTAssemblies();
+            // }
+
             ChangeState<ProcedureHybridCLRLaunch>(procedureOwner);
+        }
+        
+        /// <summary>
+        /// 为aot assembly加载原始metadata， 这个代码放aot或者热更新都行。
+        /// 一旦加载后，如果AOT泛型函数对应native实现不存在，则自动替换为解释模式执行
+        /// </summary>
+        private void LoadMetadataForAOTAssemblies()
+        {
+            /// 注意，补充元数据是给AOT dll补充元数据，而不是给热更新dll补充元数据。
+            /// 热更新dll不缺元数据，不需要补充，如果调用LoadMetadataForAOTAssembly会返回错误
+            HomologousImageMode mode = HomologousImageMode.SuperSet;
+            foreach (var aotDllName in Constant.AOTMetaNames)
+            {
+                byte[] dllBytes = m_loadedHotifx[aotDllName];
+                // 加载assembly对应的dll，会自动为它hook。一旦aot泛型函数的native函数不存在，用解释器版本代码
+                LoadImageErrorCode err = RuntimeApi.LoadMetadataForAOTAssembly(dllBytes, mode);
+                Debug.Log($"LoadMetadataForAOTAssembly:{aotDllName}. mode:{mode} ret:{err}");
+            }
         }
 
         private void PreloadResources()
         {
             // Preload configs
             LoadConfig("DefaultConfig");
-
-            // Preload data tables
-            // foreach (string dataTableName in DataTable.DataTableNames)
-            // {
-            //     LoadDataTable(dataTableName);
-            // }
             
             // Preload luban tables
-            foreach (string lubanTableName in LubanTable.LubanTableNames)
+            foreach (string lubanTableName in Constant.LubanTableNames)
             {
                 LoadLubanTable(lubanTableName);
+            }
+
+            foreach (var packageName in Constant.FairyGUIPackages)
+            {
+                LoadFairyGUIPackage(packageName);
             }
 
             // Preload dictionaries
@@ -115,7 +131,24 @@ namespace Game.Hotfix
             LoadFont("MainFont");
 
             LoadModulePrefab("HP/HP Bar");
+
+            // 加载 AOT 文件
+            // if (!GameEntry.Base.EditorResourceMode)
+            // {
+            //     foreach (var aotDllName in Constant.AOTMetaNames)
+            //     {
+            //         LoadAOTDll(aotDllName);
+            //     }
+            // }
         }
+        
+        // private void LoadAOTDll(string aotName)
+        // {
+        //     m_LoadedFlag.Add(aotName, false);
+        //     PrefabData prefabData = new PrefabData() { prefabName = aotName };
+        //     string assetName = AssetUtility.GetAOTDllAsset(aotName);
+        //     GameEntry.Resource.LoadAsset(assetName, new LoadAssetCallbacks(OnLoadAOTDllSuccess, OnLoadAOTFailured), prefabData);
+        // }
 
         private void LoadConfig(string configName)
         {
@@ -123,26 +156,20 @@ namespace Game.Hotfix
             m_LoadedFlag.Add(configAssetName, false);
             GameEntry.Config.ReadData(configAssetName, this);
         }
-
-        private void LoadDataTable(string dataTableName)
-        {
-            string dataTableAssetName = AssetUtility.GetDataTableAsset(dataTableName, false);
-            m_LoadedFlag.Add(dataTableAssetName, false);
-            GameEntry.DataTable.LoadDataTable(dataTableName, dataTableAssetName, this);
-        }
         
         private void LoadLubanTable(string lubanTableName)
         {
             string lubanTableAssetName;
-            if (GameEntry.Base.EditorResourceMode)
-            {
-                // 编辑器模式
-                lubanTableAssetName = AssetUtility.GetLubanTableAsset(lubanTableName, false);
-            }
-            else
-            {
-                lubanTableAssetName = AssetUtility.GetLubanTableAsset(lubanTableName, true);
-            }
+            // if (GameEntry.Base.EditorResourceMode)
+            // {
+            //     // 编辑器模式
+            //     lubanTableAssetName = AssetUtility.GetLubanTableAsset(lubanTableName, false);
+            // }
+            // else
+            // {
+            //     lubanTableAssetName = AssetUtility.GetLubanTableAsset(lubanTableName, true);
+            // }
+            lubanTableAssetName = AssetUtility.GetLubanTableAsset(lubanTableName, false);
             m_LoadedFlag.Add(lubanTableAssetName, false);
             GameEntry.Resource.LoadAsset(lubanTableAssetName,new LoadAssetCallbacks((string assetName, object asset, float duration, object userData) =>
             {
@@ -152,6 +179,13 @@ namespace Game.Hotfix
             {
                 Log.Error("Can not load luban table from '{0}' with error message '{1}'.", assetName, errorMessage);
             }));
+        }
+
+        private void LoadFairyGUIPackage(string packageName)
+        {
+            string packageAssetName = AssetUtility.GetFairyGuiPackages(packageName);
+            m_LoadedFlag.Add(packageAssetName, false);
+            GameEntry.Resource.LoadAsset(packageAssetName, new LoadAssetCallbacks(LoadBasicSuccessCallback));
         }
 
         private void LoadDictionary(string dictionaryName)
@@ -185,6 +219,13 @@ namespace Game.Hotfix
             string assetName = AssetUtility.GetModulePrefabsAsset(perfabName);
             GameEntry.Resource.LoadAsset(assetName, new LoadAssetCallbacks(OnLoadPerfabAssetSucceed, OnLoadPerfabAssetFailured), prefabData);
         }
+        
+        private void LoadBasicSuccessCallback(string assetName, object asset, float duration, object userData)
+        {
+            var fGuiAsset = asset as FairyGuiPackageAsset;
+            fGuiAsset.Init();
+            m_LoadedFlag[assetName] = true;
+        }
 
         private void OnLoadConfigSuccess(object sender, GameEventArgs e)
         {
@@ -207,29 +248,6 @@ namespace Game.Hotfix
             }
 
             Log.Error("Can not load config '{0}' from '{1}' with error message '{2}'.", ne.ConfigAssetName, ne.ConfigAssetName, ne.ErrorMessage);
-        }
-
-        private void OnLoadDataTableSuccess(object sender, GameEventArgs e)
-        {
-            LoadDataTableSuccessEventArgs ne = (LoadDataTableSuccessEventArgs)e;
-            if (ne.UserData != this)
-            {
-                return;
-            }
-
-            m_LoadedFlag[ne.DataTableAssetName] = true;
-            Log.Info("Load data table '{0}' OK.", ne.DataTableAssetName);
-        }
-
-        private void OnLoadDataTableFailure(object sender, GameEventArgs e)
-        {
-            LoadDataTableFailureEventArgs ne = (LoadDataTableFailureEventArgs)e;
-            if (ne.UserData != this)
-            {
-                return;
-            }
-
-            Log.Error("Can not load data table '{0}' from '{1}' with error message '{2}'.", ne.DataTableAssetName, ne.DataTableAssetName, ne.ErrorMessage);
         }
 
         private void OnLoadDictionarySuccess(object sender, GameEventArgs e)
@@ -268,5 +286,17 @@ namespace Game.Hotfix
         {
             Log.Error("Can not load {0} from '{1}' with error message '{2}'.", assetName, "PerfabsAsset", errorMessage);
         }
+        
+        // private void OnLoadAOTDllSuccess(string assetName, object asset, float duration, object userData)
+        // {
+        //     PrefabData prefabData = userData as PrefabData;
+        //     m_LoadedFlag[prefabData.prefabName] = true;
+        //     m_loadedHotifx[prefabData.prefabName] = ((TextAsset)asset).bytes;
+        // }
+        //
+        // private void OnLoadAOTFailured(string assetName, LoadResourceStatus status, string errorMessage, object userData)
+        // {
+        //     Log.Error("Can not load {0} from '{1}' with error message '{2}'.", assetName, "AOTAsset", errorMessage);
+        // }
     }
 }

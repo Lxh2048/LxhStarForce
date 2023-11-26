@@ -26,5 +26,12 @@
     "UIGroupName": "Default",
     "AllowMultiInstance": false,
     "PauseCoveredUIForm": true
+  },
+  {
+    "Id": 103,
+    "AssetName": "Main/TestForm",
+    "UIGroupName": "Default",
+    "AllowMultiInstance": false,
+    "PauseCoveredUIForm": true
   }
 ]

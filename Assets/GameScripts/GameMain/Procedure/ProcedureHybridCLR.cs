@@ -34,24 +34,17 @@ namespace Game.Main
         private Dictionary<string, bool> m_LoadedFlag = new Dictionary<string, bool>();
         private bool isLoadSuccess = false;
 
-        private List<string> AOTMetaAssemblyNames = new List<string>()
-        {
-            "GameFramework.dll",
-            "System.dll",
-            "UnityEngine.CoreModule.dll",
-            "UnityGameFramework.Runtime.dll",
-            "mscorlib.dll",
-            
-            // "System.Core.dll",
-        };
-
         protected override void OnEnter(ProcedureOwner procedureOwner)
         {
             base.OnEnter(procedureOwner);
             m_LoadedFlag.Clear();
-            
+
 #if !UNITY_EDITOR
-            LoadAOTAssemblies();
+            // 加载 AOT 文件
+            foreach (var aotDllName in MainConstant.AOTMetaNames)
+            {
+                LoadAOTDll(aotDllName);
+            }
             LoadHotAssemblies();
 #endif
         }
@@ -92,23 +85,22 @@ namespace Game.Main
                 Log.Error("Can not load {0} from '{1}' with error message '{2}'.", assetName, "GameHotfixEntry.Perfab", errorMessage);
             }));
         }
-
-        // 加载 AOT 文件
-        private void LoadAOTAssemblies()
+        
+        private void LoadAOTDll(string aotName)
         {
-            foreach (var aotDllName in AOTMetaAssemblyNames)
-            {
-                LoadAOTDll(aotDllName);
-            }
+            m_LoadedFlag.Add(aotName, false);
+            PrefabData prefabData = new PrefabData() { prefabName = aotName };
+            string assetName = MainAssetUtility.GetAOTDllAsset(aotName);
+            GameEntry.Resource.LoadAsset(assetName, new LoadAssetCallbacks(OnLoadAOTDllSuccess, OnLoadAOTFailured), prefabData);
         }
 
         // 加载 热更DLL 文件
         private void LoadHotAssemblies()
         {
             LoadHotDll("Assembly-CSharp.dll");
-            LoadAOTDll("Game.Hotfix.dll");
+            LoadHotDll("Game.Hotfix.dll");
         }
-
+        
         /// <summary>
         /// 为aot assembly加载原始metadata， 这个代码放aot或者热更新都行。
         /// 一旦加载后，如果AOT泛型函数对应native实现不存在，则自动替换为解释模式执行
@@ -118,7 +110,7 @@ namespace Game.Main
             /// 注意，补充元数据是给AOT dll补充元数据，而不是给热更新dll补充元数据。
             /// 热更新dll不缺元数据，不需要补充，如果调用LoadMetadataForAOTAssembly会返回错误
             HomologousImageMode mode = HomologousImageMode.SuperSet;
-            foreach (var aotDllName in AOTMetaAssemblyNames)
+            foreach (var aotDllName in MainConstant.AOTMetaNames)
             {
                 byte[] dllBytes = m_loadedHotifx[aotDllName];
                 // 加载assembly对应的dll，会自动为它hook。一旦aot泛型函数的native函数不存在，用解释器版本代码
@@ -133,16 +125,8 @@ namespace Game.Main
             byte[] csharpBytes = m_loadedHotifx["Assembly-CSharp.dll"];
             System.Reflection.Assembly.Load(csharpBytes);
 
-            //byte[] mainBytes = m_loadedHotifx["Game.Main.dll"];
-            //System.Reflection.Assembly.Load(mainBytes);
-        }
-
-        private void LoadAOTDll(string aotName)
-        {
-            m_LoadedFlag.Add(aotName, false);
-            PrefabData prefabData = new PrefabData() { prefabName = aotName };
-            string assetName = MainAssetUtility.GetAOTDllAsset(aotName);
-            GameEntry.Resource.LoadAsset(assetName, new LoadAssetCallbacks(OnLoadAOTDllSuccess, OnLoadAOTFailured), prefabData);
+            byte[] hotfixBytes = m_loadedHotifx["Game.Hotfix.dll"];
+            System.Reflection.Assembly.Load(hotfixBytes);
         }
 
         private void LoadHotDll(string aotName)
